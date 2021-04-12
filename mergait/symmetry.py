@@ -94,7 +94,7 @@ def append_symmetry_index(df,
         A new DataFrame with the appended symmetry columns suffixed by the method name
 
     '''
-    df = pd.DataFrame(df)
+    df = df.copy()
 
     # detect columns to merge
     features = [

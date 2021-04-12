@@ -5,11 +5,8 @@ General utility functions for handling the data
 import pandas as pd
 
 
-def load_datadumps(paths,
-                   timestamp_columns=['t'],
-                   file_type='csv',
-                   base_path=''):
-    '''
+def load_datadumps(paths, timestamp_columns=["t"], file_type="csv", base_path=""):
+    """
     Load one or more datadump files into Pandas DataFrames.
     It additionally parses date columns and sorts by timestamp.
 
@@ -28,12 +25,13 @@ def load_datadumps(paths,
     -------
     list(pandas.DataFrame)
         A list of DataFrames corresponding to the given paths
-    '''
+    """
     dfs = []
 
     for path in paths if isinstance(paths, list) else [paths]:
         df = pd.read_csv(base_path + path, parse_dates=timestamp_columns)
-        df.sort_values(by=timestamp_columns[0], inplace=True)
+        if len(timestamp_columns) > 0:
+            df.sort_values(by=timestamp_columns[0], inplace=True)
         df.reset_index(drop=True, inplace=True)
         dfs.append(df)
 

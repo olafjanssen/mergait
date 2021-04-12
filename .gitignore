@@ -145,3 +145,13 @@ Thumbs.db #thumbnail cache on Windows
 
 # profiling data
 .prof
+
+# IDE files
+.vscode
+
+# sample data
+data/*
+!data/README.md
+
+# general OS files
+.DS_Store

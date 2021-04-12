@@ -1,0 +1,1392 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>mergait.rawreader API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>mergait.rawreader</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import pandas as pd
+
+
+class RawReader:
+    &#39;&#39;&#39;
+    Reads and consumes raw data files (stored as raw.jsonl) from the Music Enabled Running project.
+
+    The state can be updated by feeding it additional lines (msg) from the data file.
+    You can then extract the data of the different sensors and modalities as Pandas dataframes.
+    &#39;&#39;&#39;
+    def __init__(self):
+        self.footpods = []
+        self.footpods_sc = []
+        self.phone_activity = []
+        self.phone_motion = []
+        self.music = []
+        self.phone_location = []
+        self.t_range = []
+
+    def update_with(self, msg):
+        &#39;&#39;&#39;
+        Updates the class state with a new message from the raw data file.
+
+        Parameters
+        ----------
+        msg : dict
+            The dictionary representing the data message from the raw file. 
+            Note, the raw JSON line must be first converted to a dict.
+
+        &#39;&#39;&#39;
+        if &#39;t&#39; in msg:
+            t = msg[&#39;t&#39;]
+            self.t_range = [t, t
+                            ] if self.t_range == [] else [self.t_range[0], t]
+
+        if msg[&#39;type&#39;] == &#39;iPhone-pedo&#39;:
+            self.phone_activity.append({
+                &#39;t&#39;:
+                pd.Timestamp(msg[&#39;t&#39;], unit=&#39;s&#39;),
+                &#39;activity&#39;:
+                msg[&#39;pedo&#39;][&#39;activity&#39;],
+                &#39;speed&#39;:
+                0 if msg[&#39;pedo&#39;][&#39;pace&#39;] == 0 else 1.0 / msg[&#39;pedo&#39;][&#39;pace&#39;],
+                &#39;step&#39;:
+                msg[&#39;pedo&#39;][&#39;step&#39;],
+                &#39;cadence&#39;:
+                msg[&#39;pedo&#39;][&#39;cadence&#39;] * 60,
+                &#39;floors_ascended&#39;:
+                msg[&#39;pedo&#39;][&#39;floorsAscended&#39;]
+                if &#39;floorsAscended&#39; in msg[&#39;pedo&#39;] else 0,
+                &#39;floors_descended&#39;:
+                msg[&#39;pedo&#39;][&#39;floorsDescended&#39;]
+                if &#39;floorsDescended&#39; in msg[&#39;pedo&#39;] else 0
+            })
+
+        if msg[&#39;type&#39;] == &#39;iPhone-motion&#39;:
+            gx = msg[&#39;motion&#39;][&#39;ag&#39;][0] - msg[&#39;motion&#39;][&#39;a&#39;][0]
+            gy = msg[&#39;motion&#39;][&#39;ag&#39;][1] - msg[&#39;motion&#39;][&#39;a&#39;][1]
+            gz = msg[&#39;motion&#39;][&#39;ag&#39;][2] - msg[&#39;motion&#39;][&#39;a&#39;][2]
+            a_vert = msg[&#39;motion&#39;][&#39;a&#39;][0] * gx + msg[&#39;motion&#39;][&#39;a&#39;][
+                1] * gy + msg[&#39;motion&#39;][&#39;a&#39;][2] * gz
+
+            self.phone_motion.append({
+                &#39;t&#39;: pd.Timestamp(msg[&#39;t&#39;], unit=&#39;s&#39;),
+                &#39;ax&#39;: msg[&#39;motion&#39;][&#39;a&#39;][0],
+                &#39;ay&#39;: msg[&#39;motion&#39;][&#39;a&#39;][1],
+                &#39;az&#39;: msg[&#39;motion&#39;][&#39;a&#39;][2],
+                &#39;gx&#39;: gx,
+                &#39;gy&#39;: gy,
+                &#39;gz&#39;: gz,
+                &#39;a_vert&#39;: a_vert,
+                &#39;rx&#39;: msg[&#39;motion&#39;][&#39;r&#39;][0],
+                &#39;ry&#39;: msg[&#39;motion&#39;][&#39;r&#39;][1],
+                &#39;rz&#39;: msg[&#39;motion&#39;][&#39;r&#39;][2],
+            })
+
+        if msg[&#39;type&#39;] == &#39;iPhone-location&#39;:
+            self.phone_location.append({
+                &#39;t&#39;:
+                pd.Timestamp(msg[&#39;location&#39;][&#39;timestamp&#39;], unit=&#39;s&#39;),
+                &#39;lon&#39;:
+                msg[&#39;location&#39;][&#39;coordinate&#39;][&#39;lon&#39;],
+                &#39;lat&#39;:
+                msg[&#39;location&#39;][&#39;coordinate&#39;][&#39;lat&#39;],
+                &#39;lonlat_acc&#39;:
+                msg[&#39;location&#39;][&#39;coordinate&#39;][&#39;acc&#39;],
+                &#39;alt&#39;:
+                msg[&#39;location&#39;][&#39;altitude&#39;][&#39;val&#39;],
+                &#39;alt_acc&#39;:
+                msg[&#39;location&#39;][&#39;altitude&#39;][&#39;acc&#39;],
+                &#39;course&#39;:
+                msg[&#39;location&#39;][&#39;course&#39;][&#39;val&#39;],
+                &#39;course_acc&#39;:
+                msg[&#39;location&#39;][&#39;course&#39;][&#39;acc&#39;],
+                &#39;speed&#39;:
+                msg[&#39;location&#39;][&#39;speed&#39;][&#39;val&#39;],
+                &#39;speed_acc&#39;:
+                msg[&#39;location&#39;][&#39;speed&#39;][&#39;acc&#39;],
+            })
+
+        if msg[&#39;type&#39;] == &#39;RunScribe-speedcadence&#39;:
+            self.footpods_sc.append({
+                &#39;t&#39;: pd.Timestamp(msg[&#39;t&#39;], unit=&#39;s&#39;),
+                &#39;foot&#39;: msg[&#39;runscribe&#39;][&#39;foot&#39;],
+                &#39;cadence&#39;: msg[&#39;rsc&#39;][&#39;cadence&#39;],
+                &#39;speed&#39;: msg[&#39;rsc&#39;][&#39;speed&#39;]
+            })
+
+        if msg[&#39;type&#39;] == &#39;RunScribe-metrics&#39;:
+            self.footpods.append({
+                &#39;t&#39;: pd.Timestamp(msg[&#39;t&#39;], unit=&#39;s&#39;),
+                &#39;foot&#39;: msg[&#39;runscribe&#39;][&#39;foot&#39;],
+                &#39;pronation&#39;: msg[&#39;metrics&#39;][&#39;pronation&#39;],
+                &#39;braking&#39;: msg[&#39;metrics&#39;][&#39;braking&#39;],
+                &#39;impact&#39;: msg[&#39;metrics&#39;][&#39;impact&#39;],
+                &#39;contact_time&#39;: msg[&#39;metrics&#39;][&#39;contactTime&#39;],
+                &#39;flight_ratio&#39;: msg[&#39;metrics&#39;][&#39;flightRatio&#39;],
+                &#39;strike&#39;: msg[&#39;metrics&#39;][&#39;strikeType&#39;],
+                &#39;power&#39;: msg[&#39;metrics&#39;][&#39;power&#39;]
+            })
+
+        if msg[&#39;type&#39;] == &#39;Spotify&#39; and &#39;playstate&#39; in msg:
+
+            if &#39;name&#39; in msg[&#39;playstate&#39;]:
+                split_track = msg[&#39;playstate&#39;][&#39;name&#39;].split(&#39;-&#39;, 2)
+                msg[&#39;playstate&#39;][&#39;artist&#39;] = split_track[0].strip()
+                msg[&#39;playstate&#39;][&#39;track&#39;] = split_track[1].strip()
+
+            self.music.append({
+                &#39;t&#39;:
+                pd.Timestamp(msg[&#39;t&#39;], unit=&#39;s&#39;),
+                &#39;track_uri&#39;:
+                msg[&#39;playstate&#39;][&#39;uri&#39;],
+                &#39;paused&#39;:
+                msg[&#39;playstate&#39;][&#39;paused&#39;],
+                &#39;artist&#39;:
+                msg[&#39;playstate&#39;][&#39;artist&#39;],
+                &#39;track&#39;:
+                msg[&#39;playstate&#39;][&#39;track&#39;],
+                &#39;context_uri&#39;:
+                msg[&#39;playstate&#39;][&#39;contextUri&#39;],
+                &#39;context&#39;:
+                msg[&#39;playstate&#39;][&#39;contextTitle&#39;],
+                &#39;position&#39;:
+                msg[&#39;playstate&#39;][&#39;position&#39;] / 1000,
+                &#39;repeat_mode&#39;:
+                msg[&#39;playstate&#39;][&#39;repeatMode&#39;]
+                if &#39;repeatMode&#39; in msg else &#39;off&#39;,
+                &#39;shuffle&#39;:
+                msg[&#39;playstate&#39;][&#39;shuffle&#39;] if &#39;shuffle&#39; in msg else False,
+                &#39;crossfade&#39;:
+                msg[&#39;playstate&#39;][&#39;crossfadeState&#39;]
+                if &#39;crossfadeState&#39; in msg else False,
+            })
+
+        return True
+
+    def get_footpods_df(self):
+        &#39;&#39;&#39;
+        Get per-step data of (RunScribe) footpods in a Pandas DataFrame.
+
+        Returns
+        -------
+        pandas.DataFrame
+            Pandas dataframe with all the per-step data of both left and right footpod
+
+            Columns:
+                Name: t, dtype: datetime64[ns]
+                    Timestamp [s] of sensor event, not the exact step timestamp
+                Name: foot, dtype: object 
+                    Foot for pod &#39;left&#39; or &#39;right&#39;
+                Name: pronation, dtype: float64 
+                    Maximum foot pronation [deg]. Is expected to be a negative value.
+                Name: braking, dtype: float64
+                    Braking force on foot on impact [G]
+                Name: impact, dtype: float64
+                    Downward maximal foot impact [G]
+                Name: contact_time, dtype: int64
+                    Time between initial contact and final contact of foot [ms]
+                Name: flight_ratio, dtype: float64
+                    Ratio between time that foot is in the air to the total stride duration.
+                Name: strike, dtype: int64
+                    Initial strike contact of the foot, 1=heel, 15=toe
+                Name: power, dtype: int64
+                    Power of the step [W]
+
+        &#39;&#39;&#39;
+        return pd.DataFrame(self.footpods)
+
+    def get_footpods_sc_df(self):
+        &#39;&#39;&#39;
+        Get speed-cadence sensor data of (RunScribe) footpods per foot in a Pandas DataFrame.
+        The data is not per-step but with a sampling frequency of about 1Hz.
+
+        Returns
+        -------
+        pandas.DataFrame
+            Pandas dataframe with speed-cadence data of both left and right footpod
+
+            Columns:
+                Name: t, dtype: datetime64[ns]
+                    Timestamp [s] of sensor event
+                Name: foot, dtype: object 
+                    Foot for pod &#39;left&#39; or &#39;right&#39;
+                Name: cadence, dtype: int64 
+                    Strides per minute [/min]. This is about half the step frequency
+                Name: speed, dtype: float64
+                    Average speed of the foot [m/s] based on estimated user height (may not be set properly)
+                    
+        &#39;&#39;&#39;
+        return pd.DataFrame(self.footpods_sc)
+
+    def get_phone_motion_df(self):
+        &#39;&#39;&#39;
+        Get motion data of the IMU sensor of the (i)Phone in a Pandas DataFrame.
+        For the iPhone the data is sampled at 100Hz.
+
+        Returns
+        -------
+        pandas.DataFrame
+            Pandas dataframe with real-time IMU data
+
+            Columns:
+                Name: t, dtype: datetime64[ns]
+                    Timestamp [s] of sensor event
+                Name: ax, dtype: float64 
+                    Acceleration (including gravity) in the x-direction [G]
+                Name: ay, dtype: float64 
+                    Acceleration (including gravity) in the y-direction [G]
+                Name: az, dtype: float64 
+                    Acceleration (including gravity) in the z-direction [G]
+                Name: gx, dtype: float64 
+                    Gravity acceleration in the x-direction [G]
+                Name: gy, dtype: float64 
+                    Gravity acceleration in the y-direction [G]
+                Name: gz, dtype: float64 
+                    Gravity acceleration in the z-direction [G]
+                Name: a_vert, dtype: float64
+                    Acceleration in vertical direction [G], this is inner product of a and g
+                Name: rx, dtype: float64 
+                    Rotation velocity [deg/s] in x-direction
+                Name: ry, dtype: float64 
+                    Rotation velocity [deg/s] in y-direction
+                Name: rz, dtype: float64 
+                    Rotation velocity [deg/s] in z-direction
+                    
+        &#39;&#39;&#39;
+        return pd.DataFrame(self.phone_motion)
+
+    def get_phone_location_df(self):
+        &#39;&#39;&#39;
+        Get GPS location data of the phone. Update frequency may vary.
+
+        Returns
+        -------
+        pandas.DataFrame
+            Pandas dataframe with GPS data.
+
+            Columns:
+                Name: t, dtype: datetime64[ns]
+                    Timestamp [s] of sensor event
+                Name: lon, dtype: float64 
+                    Longitude [deg]
+                Name: lat, dtype: float64
+                    Latitude [deg]
+                Name: lonlat_acc, dtype: float64
+                    Estimated horizontal accuracy of longitude and latitude [deg]
+                Name: alt, dtype: float64
+                    Altitude [m]
+                Name: alt_acc, dtype: float64
+                    Estimated vertical accuracy of altitude [deg]
+                Name: course, dtype: float64
+                    Heading course in horizontal plane [deg]
+                Name: alt_acc, dtype: float64
+                    Estimated course accuracy [deg]
+                Name: speed, dtype: float64
+                    Speed of sensor [m/s]
+                Name: speed_acc, dtype: float64
+                    Estimated accuracy of speed [m/s]
+                    
+        &#39;&#39;&#39;
+        return pd.DataFrame(self.phone_location)
+
+    def get_phone_activity_df(self):
+        &#39;&#39;&#39;
+        Get (i)Phone activity and pedometer related data in a Pandas DataFrame.
+
+        Returns
+        -------
+        pandas.DataFrame
+            Pandas dataframe with activity and pedometer data.
+
+            Columns:
+                Name: t, dtype: datetime64[ns]
+                    Timestamp [s] of sensor event
+                Name: activity, dtype: object
+                    Detected activity &#39;stationary&#39;, &#39;walking&#39;, &#39;running&#39;
+                Name: speed, dtype: float64
+                    Speed of phone motion [m/s]
+                Name: step, dtype: float64
+                    Number of steps taken since starting session
+                Name: cadence, dtype: int64
+                    Step frequency [/min]
+                Name: floors_ascended, dtype: int64
+                    Number of floors ascended since starting session
+                Name: floors_descended, dtype: int64
+                    Number of floors descended since starting session
+                    
+        &#39;&#39;&#39;
+        return pd.DataFrame(self.phone_activity)
+
+    def get_music_df(self):
+        &#39;&#39;&#39;
+        Get information about the state of the (Spotify) music player in a Pandas DataFrame.
+
+        Returns
+        -------
+        pandas.DataFrame
+            Pandas dataframe with music player data.
+
+            Columns:
+                Name: t, dtype: datetime64[ns]
+                    Timestamp [s] of sensor event
+                Name: track_uri, dtype: object
+                    URI of the track being played
+                Name: paused, dtype: bool
+                    Whether the player is playing or on pause
+                Name: artist, dtype: object
+                    String of the artist name
+                Name: track, dtype: object
+                    String of the track title
+                Name: context_uri, dtype: object
+                    URI of the track context, usually a playlist
+                Name: context, dtype: object
+                    String of the track context, usually a playlist
+                Name: position, dtype: int64
+                    Position [s] of the playhead in the track
+                Name: repeat_mode, dtype: object
+                    State of the repeat mode, &#39;off&#39;, &#39;track&#39;, &#39;context&#39;
+                Name: shuffle, dtype: bool
+                    State of the shuffle option
+                Name: crossfade, dtype: bool
+                    State indicating whether crossfade is turned on
+
+        &#39;&#39;&#39;
+        return pd.DataFrame(self.music)
+
+    def get_timestamp_range(self):
+        &#39;&#39;&#39;
+        Get the minimum and maximum timestamp values in the data.
+
+        Returns
+        -------
+        list: integer
+            Minimum and maximum value of the timestamp in the data
+    
+        &#39;&#39;&#39;
+        return self.t_range</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="mergait.rawreader.RawReader"><code class="flex name class">
+<span>class <span class="ident">RawReader</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Reads and consumes raw data files (stored as raw.jsonl) from the Music Enabled Running project.</p>
+<p>The state can be updated by feeding it additional lines (msg) from the data file.
+You can then extract the data of the different sensors and modalities as Pandas dataframes.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class RawReader:
+    &#39;&#39;&#39;
+    Reads and consumes raw data files (stored as raw.jsonl) from the Music Enabled Running project.
+
+    The state can be updated by feeding it additional lines (msg) from the data file.
+    You can then extract the data of the different sensors and modalities as Pandas dataframes.
+    &#39;&#39;&#39;
+    def __init__(self):
+        self.footpods = []
+        self.footpods_sc = []
+        self.phone_activity = []
+        self.phone_motion = []
+        self.music = []
+        self.phone_location = []
+        self.t_range = []
+
+    def update_with(self, msg):
+        &#39;&#39;&#39;
+        Updates the class state with a new message from the raw data file.
+
+        Parameters
+        ----------
+        msg : dict
+            The dictionary representing the data message from the raw file. 
+            Note, the raw JSON line must be first converted to a dict.
+
+        &#39;&#39;&#39;
+        if &#39;t&#39; in msg:
+            t = msg[&#39;t&#39;]
+            self.t_range = [t, t
+                            ] if self.t_range == [] else [self.t_range[0], t]
+
+        if msg[&#39;type&#39;] == &#39;iPhone-pedo&#39;:
+            self.phone_activity.append({
+                &#39;t&#39;:
+                pd.Timestamp(msg[&#39;t&#39;], unit=&#39;s&#39;),
+                &#39;activity&#39;:
+                msg[&#39;pedo&#39;][&#39;activity&#39;],
+                &#39;speed&#39;:
+                0 if msg[&#39;pedo&#39;][&#39;pace&#39;] == 0 else 1.0 / msg[&#39;pedo&#39;][&#39;pace&#39;],
+                &#39;step&#39;:
+                msg[&#39;pedo&#39;][&#39;step&#39;],
+                &#39;cadence&#39;:
+                msg[&#39;pedo&#39;][&#39;cadence&#39;] * 60,
+                &#39;floors_ascended&#39;:
+                msg[&#39;pedo&#39;][&#39;floorsAscended&#39;]
+                if &#39;floorsAscended&#39; in msg[&#39;pedo&#39;] else 0,
+                &#39;floors_descended&#39;:
+                msg[&#39;pedo&#39;][&#39;floorsDescended&#39;]
+                if &#39;floorsDescended&#39; in msg[&#39;pedo&#39;] else 0
+            })
+
+        if msg[&#39;type&#39;] == &#39;iPhone-motion&#39;:
+            gx = msg[&#39;motion&#39;][&#39;ag&#39;][0] - msg[&#39;motion&#39;][&#39;a&#39;][0]
+            gy = msg[&#39;motion&#39;][&#39;ag&#39;][1] - msg[&#39;motion&#39;][&#39;a&#39;][1]
+            gz = msg[&#39;motion&#39;][&#39;ag&#39;][2] - msg[&#39;motion&#39;][&#39;a&#39;][2]
+            a_vert = msg[&#39;motion&#39;][&#39;a&#39;][0] * gx + msg[&#39;motion&#39;][&#39;a&#39;][
+                1] * gy + msg[&#39;motion&#39;][&#39;a&#39;][2] * gz
+
+            self.phone_motion.append({
+                &#39;t&#39;: pd.Timestamp(msg[&#39;t&#39;], unit=&#39;s&#39;),
+                &#39;ax&#39;: msg[&#39;motion&#39;][&#39;a&#39;][0],
+                &#39;ay&#39;: msg[&#39;motion&#39;][&#39;a&#39;][1],
+                &#39;az&#39;: msg[&#39;motion&#39;][&#39;a&#39;][2],
+                &#39;gx&#39;: gx,
+                &#39;gy&#39;: gy,
+                &#39;gz&#39;: gz,
+                &#39;a_vert&#39;: a_vert,
+                &#39;rx&#39;: msg[&#39;motion&#39;][&#39;r&#39;][0],
+                &#39;ry&#39;: msg[&#39;motion&#39;][&#39;r&#39;][1],
+                &#39;rz&#39;: msg[&#39;motion&#39;][&#39;r&#39;][2],
+            })
+
+        if msg[&#39;type&#39;] == &#39;iPhone-location&#39;:
+            self.phone_location.append({
+                &#39;t&#39;:
+                pd.Timestamp(msg[&#39;location&#39;][&#39;timestamp&#39;], unit=&#39;s&#39;),
+                &#39;lon&#39;:
+                msg[&#39;location&#39;][&#39;coordinate&#39;][&#39;lon&#39;],
+                &#39;lat&#39;:
+                msg[&#39;location&#39;][&#39;coordinate&#39;][&#39;lat&#39;],
+                &#39;lonlat_acc&#39;:
+                msg[&#39;location&#39;][&#39;coordinate&#39;][&#39;acc&#39;],
+                &#39;alt&#39;:
+                msg[&#39;location&#39;][&#39;altitude&#39;][&#39;val&#39;],
+                &#39;alt_acc&#39;:
+                msg[&#39;location&#39;][&#39;altitude&#39;][&#39;acc&#39;],
+                &#39;course&#39;:
+                msg[&#39;location&#39;][&#39;course&#39;][&#39;val&#39;],
+                &#39;course_acc&#39;:
+                msg[&#39;location&#39;][&#39;course&#39;][&#39;acc&#39;],
+                &#39;speed&#39;:
+                msg[&#39;location&#39;][&#39;speed&#39;][&#39;val&#39;],
+                &#39;speed_acc&#39;:
+                msg[&#39;location&#39;][&#39;speed&#39;][&#39;acc&#39;],
+            })
+
+        if msg[&#39;type&#39;] == &#39;RunScribe-speedcadence&#39;:
+            self.footpods_sc.append({
+                &#39;t&#39;: pd.Timestamp(msg[&#39;t&#39;], unit=&#39;s&#39;),
+                &#39;foot&#39;: msg[&#39;runscribe&#39;][&#39;foot&#39;],
+                &#39;cadence&#39;: msg[&#39;rsc&#39;][&#39;cadence&#39;],
+                &#39;speed&#39;: msg[&#39;rsc&#39;][&#39;speed&#39;]
+            })
+
+        if msg[&#39;type&#39;] == &#39;RunScribe-metrics&#39;:
+            self.footpods.append({
+                &#39;t&#39;: pd.Timestamp(msg[&#39;t&#39;], unit=&#39;s&#39;),
+                &#39;foot&#39;: msg[&#39;runscribe&#39;][&#39;foot&#39;],
+                &#39;pronation&#39;: msg[&#39;metrics&#39;][&#39;pronation&#39;],
+                &#39;braking&#39;: msg[&#39;metrics&#39;][&#39;braking&#39;],
+                &#39;impact&#39;: msg[&#39;metrics&#39;][&#39;impact&#39;],
+                &#39;contact_time&#39;: msg[&#39;metrics&#39;][&#39;contactTime&#39;],
+                &#39;flight_ratio&#39;: msg[&#39;metrics&#39;][&#39;flightRatio&#39;],
+                &#39;strike&#39;: msg[&#39;metrics&#39;][&#39;strikeType&#39;],
+                &#39;power&#39;: msg[&#39;metrics&#39;][&#39;power&#39;]
+            })
+
+        if msg[&#39;type&#39;] == &#39;Spotify&#39; and &#39;playstate&#39; in msg:
+
+            if &#39;name&#39; in msg[&#39;playstate&#39;]:
+                split_track = msg[&#39;playstate&#39;][&#39;name&#39;].split(&#39;-&#39;, 2)
+                msg[&#39;playstate&#39;][&#39;artist&#39;] = split_track[0].strip()
+                msg[&#39;playstate&#39;][&#39;track&#39;] = split_track[1].strip()
+
+            self.music.append({
+                &#39;t&#39;:
+                pd.Timestamp(msg[&#39;t&#39;], unit=&#39;s&#39;),
+                &#39;track_uri&#39;:
+                msg[&#39;playstate&#39;][&#39;uri&#39;],
+                &#39;paused&#39;:
+                msg[&#39;playstate&#39;][&#39;paused&#39;],
+                &#39;artist&#39;:
+                msg[&#39;playstate&#39;][&#39;artist&#39;],
+                &#39;track&#39;:
+                msg[&#39;playstate&#39;][&#39;track&#39;],
+                &#39;context_uri&#39;:
+                msg[&#39;playstate&#39;][&#39;contextUri&#39;],
+                &#39;context&#39;:
+                msg[&#39;playstate&#39;][&#39;contextTitle&#39;],
+                &#39;position&#39;:
+                msg[&#39;playstate&#39;][&#39;position&#39;] / 1000,
+                &#39;repeat_mode&#39;:
+                msg[&#39;playstate&#39;][&#39;repeatMode&#39;]
+                if &#39;repeatMode&#39; in msg else &#39;off&#39;,
+                &#39;shuffle&#39;:
+                msg[&#39;playstate&#39;][&#39;shuffle&#39;] if &#39;shuffle&#39; in msg else False,
+                &#39;crossfade&#39;:
+                msg[&#39;playstate&#39;][&#39;crossfadeState&#39;]
+                if &#39;crossfadeState&#39; in msg else False,
+            })
+
+        return True
+
+    def get_footpods_df(self):
+        &#39;&#39;&#39;
+        Get per-step data of (RunScribe) footpods in a Pandas DataFrame.
+
+        Returns
+        -------
+        pandas.DataFrame
+            Pandas dataframe with all the per-step data of both left and right footpod
+
+            Columns:
+                Name: t, dtype: datetime64[ns]
+                    Timestamp [s] of sensor event, not the exact step timestamp
+                Name: foot, dtype: object 
+                    Foot for pod &#39;left&#39; or &#39;right&#39;
+                Name: pronation, dtype: float64 
+                    Maximum foot pronation [deg]. Is expected to be a negative value.
+                Name: braking, dtype: float64
+                    Braking force on foot on impact [G]
+                Name: impact, dtype: float64
+                    Downward maximal foot impact [G]
+                Name: contact_time, dtype: int64
+                    Time between initial contact and final contact of foot [ms]
+                Name: flight_ratio, dtype: float64
+                    Ratio between time that foot is in the air to the total stride duration.
+                Name: strike, dtype: int64
+                    Initial strike contact of the foot, 1=heel, 15=toe
+                Name: power, dtype: int64
+                    Power of the step [W]
+
+        &#39;&#39;&#39;
+        return pd.DataFrame(self.footpods)
+
+    def get_footpods_sc_df(self):
+        &#39;&#39;&#39;
+        Get speed-cadence sensor data of (RunScribe) footpods per foot in a Pandas DataFrame.
+        The data is not per-step but with a sampling frequency of about 1Hz.
+
+        Returns
+        -------
+        pandas.DataFrame
+            Pandas dataframe with speed-cadence data of both left and right footpod
+
+            Columns:
+                Name: t, dtype: datetime64[ns]
+                    Timestamp [s] of sensor event
+                Name: foot, dtype: object 
+                    Foot for pod &#39;left&#39; or &#39;right&#39;
+                Name: cadence, dtype: int64 
+                    Strides per minute [/min]. This is about half the step frequency
+                Name: speed, dtype: float64
+                    Average speed of the foot [m/s] based on estimated user height (may not be set properly)
+                    
+        &#39;&#39;&#39;
+        return pd.DataFrame(self.footpods_sc)
+
+    def get_phone_motion_df(self):
+        &#39;&#39;&#39;
+        Get motion data of the IMU sensor of the (i)Phone in a Pandas DataFrame.
+        For the iPhone the data is sampled at 100Hz.
+
+        Returns
+        -------
+        pandas.DataFrame
+            Pandas dataframe with real-time IMU data
+
+            Columns:
+                Name: t, dtype: datetime64[ns]
+                    Timestamp [s] of sensor event
+                Name: ax, dtype: float64 
+                    Acceleration (including gravity) in the x-direction [G]
+                Name: ay, dtype: float64 
+                    Acceleration (including gravity) in the y-direction [G]
+                Name: az, dtype: float64 
+                    Acceleration (including gravity) in the z-direction [G]
+                Name: gx, dtype: float64 
+                    Gravity acceleration in the x-direction [G]
+                Name: gy, dtype: float64 
+                    Gravity acceleration in the y-direction [G]
+                Name: gz, dtype: float64 
+                    Gravity acceleration in the z-direction [G]
+                Name: a_vert, dtype: float64
+                    Acceleration in vertical direction [G], this is inner product of a and g
+                Name: rx, dtype: float64 
+                    Rotation velocity [deg/s] in x-direction
+                Name: ry, dtype: float64 
+                    Rotation velocity [deg/s] in y-direction
+                Name: rz, dtype: float64 
+                    Rotation velocity [deg/s] in z-direction
+                    
+        &#39;&#39;&#39;
+        return pd.DataFrame(self.phone_motion)
+
+    def get_phone_location_df(self):
+        &#39;&#39;&#39;
+        Get GPS location data of the phone. Update frequency may vary.
+
+        Returns
+        -------
+        pandas.DataFrame
+            Pandas dataframe with GPS data.
+
+            Columns:
+                Name: t, dtype: datetime64[ns]
+                    Timestamp [s] of sensor event
+                Name: lon, dtype: float64 
+                    Longitude [deg]
+                Name: lat, dtype: float64
+                    Latitude [deg]
+                Name: lonlat_acc, dtype: float64
+                    Estimated horizontal accuracy of longitude and latitude [deg]
+                Name: alt, dtype: float64
+                    Altitude [m]
+                Name: alt_acc, dtype: float64
+                    Estimated vertical accuracy of altitude [deg]
+                Name: course, dtype: float64
+                    Heading course in horizontal plane [deg]
+                Name: alt_acc, dtype: float64
+                    Estimated course accuracy [deg]
+                Name: speed, dtype: float64
+                    Speed of sensor [m/s]
+                Name: speed_acc, dtype: float64
+                    Estimated accuracy of speed [m/s]
+                    
+        &#39;&#39;&#39;
+        return pd.DataFrame(self.phone_location)
+
+    def get_phone_activity_df(self):
+        &#39;&#39;&#39;
+        Get (i)Phone activity and pedometer related data in a Pandas DataFrame.
+
+        Returns
+        -------
+        pandas.DataFrame
+            Pandas dataframe with activity and pedometer data.
+
+            Columns:
+                Name: t, dtype: datetime64[ns]
+                    Timestamp [s] of sensor event
+                Name: activity, dtype: object
+                    Detected activity &#39;stationary&#39;, &#39;walking&#39;, &#39;running&#39;
+                Name: speed, dtype: float64
+                    Speed of phone motion [m/s]
+                Name: step, dtype: float64
+                    Number of steps taken since starting session
+                Name: cadence, dtype: int64
+                    Step frequency [/min]
+                Name: floors_ascended, dtype: int64
+                    Number of floors ascended since starting session
+                Name: floors_descended, dtype: int64
+                    Number of floors descended since starting session
+                    
+        &#39;&#39;&#39;
+        return pd.DataFrame(self.phone_activity)
+
+    def get_music_df(self):
+        &#39;&#39;&#39;
+        Get information about the state of the (Spotify) music player in a Pandas DataFrame.
+
+        Returns
+        -------
+        pandas.DataFrame
+            Pandas dataframe with music player data.
+
+            Columns:
+                Name: t, dtype: datetime64[ns]
+                    Timestamp [s] of sensor event
+                Name: track_uri, dtype: object
+                    URI of the track being played
+                Name: paused, dtype: bool
+                    Whether the player is playing or on pause
+                Name: artist, dtype: object
+                    String of the artist name
+                Name: track, dtype: object
+                    String of the track title
+                Name: context_uri, dtype: object
+                    URI of the track context, usually a playlist
+                Name: context, dtype: object
+                    String of the track context, usually a playlist
+                Name: position, dtype: int64
+                    Position [s] of the playhead in the track
+                Name: repeat_mode, dtype: object
+                    State of the repeat mode, &#39;off&#39;, &#39;track&#39;, &#39;context&#39;
+                Name: shuffle, dtype: bool
+                    State of the shuffle option
+                Name: crossfade, dtype: bool
+                    State indicating whether crossfade is turned on
+
+        &#39;&#39;&#39;
+        return pd.DataFrame(self.music)
+
+    def get_timestamp_range(self):
+        &#39;&#39;&#39;
+        Get the minimum and maximum timestamp values in the data.
+
+        Returns
+        -------
+        list: integer
+            Minimum and maximum value of the timestamp in the data
+    
+        &#39;&#39;&#39;
+        return self.t_range</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="mergait.rawreader.RawReader.get_footpods_df"><code class="name flex">
+<span>def <span class="ident">get_footpods_df</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get per-step data of (RunScribe) footpods in a Pandas DataFrame.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>pandas.DataFrame</code></dt>
+<dd>
+<p>Pandas dataframe with all the per-step data of both left and right footpod</p>
+<p>Columns:
+Name: t, dtype: datetime64[ns]
+Timestamp [s] of sensor event, not the exact step timestamp
+Name: foot, dtype: object
+Foot for pod 'left' or 'right'
+Name: pronation, dtype: float64
+Maximum foot pronation [deg]. Is expected to be a negative value.
+Name: braking, dtype: float64
+Braking force on foot on impact [G]
+Name: impact, dtype: float64
+Downward maximal foot impact [G]
+Name: contact_time, dtype: int64
+Time between initial contact and final contact of foot [ms]
+Name: flight_ratio, dtype: float64
+Ratio between time that foot is in the air to the total stride duration.
+Name: strike, dtype: int64
+Initial strike contact of the foot, 1=heel, 15=toe
+Name: power, dtype: int64
+Power of the step [W]</p>
+</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_footpods_df(self):
+    &#39;&#39;&#39;
+    Get per-step data of (RunScribe) footpods in a Pandas DataFrame.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Pandas dataframe with all the per-step data of both left and right footpod
+
+        Columns:
+            Name: t, dtype: datetime64[ns]
+                Timestamp [s] of sensor event, not the exact step timestamp
+            Name: foot, dtype: object 
+                Foot for pod &#39;left&#39; or &#39;right&#39;
+            Name: pronation, dtype: float64 
+                Maximum foot pronation [deg]. Is expected to be a negative value.
+            Name: braking, dtype: float64
+                Braking force on foot on impact [G]
+            Name: impact, dtype: float64
+                Downward maximal foot impact [G]
+            Name: contact_time, dtype: int64
+                Time between initial contact and final contact of foot [ms]
+            Name: flight_ratio, dtype: float64
+                Ratio between time that foot is in the air to the total stride duration.
+            Name: strike, dtype: int64
+                Initial strike contact of the foot, 1=heel, 15=toe
+            Name: power, dtype: int64
+                Power of the step [W]
+
+    &#39;&#39;&#39;
+    return pd.DataFrame(self.footpods)</code></pre>
+</details>
+</dd>
+<dt id="mergait.rawreader.RawReader.get_footpods_sc_df"><code class="name flex">
+<span>def <span class="ident">get_footpods_sc_df</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get speed-cadence sensor data of (RunScribe) footpods per foot in a Pandas DataFrame.
+The data is not per-step but with a sampling frequency of about 1Hz.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>pandas.DataFrame</code></dt>
+<dd>
+<p>Pandas dataframe with speed-cadence data of both left and right footpod</p>
+<p>Columns:
+Name: t, dtype: datetime64[ns]
+Timestamp [s] of sensor event
+Name: foot, dtype: object
+Foot for pod 'left' or 'right'
+Name: cadence, dtype: int64
+Strides per minute [/min]. This is about half the step frequency
+Name: speed, dtype: float64
+Average speed of the foot [m/s] based on estimated user height (may not be set properly)</p>
+</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_footpods_sc_df(self):
+    &#39;&#39;&#39;
+    Get speed-cadence sensor data of (RunScribe) footpods per foot in a Pandas DataFrame.
+    The data is not per-step but with a sampling frequency of about 1Hz.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Pandas dataframe with speed-cadence data of both left and right footpod
+
+        Columns:
+            Name: t, dtype: datetime64[ns]
+                Timestamp [s] of sensor event
+            Name: foot, dtype: object 
+                Foot for pod &#39;left&#39; or &#39;right&#39;
+            Name: cadence, dtype: int64 
+                Strides per minute [/min]. This is about half the step frequency
+            Name: speed, dtype: float64
+                Average speed of the foot [m/s] based on estimated user height (may not be set properly)
+                
+    &#39;&#39;&#39;
+    return pd.DataFrame(self.footpods_sc)</code></pre>
+</details>
+</dd>
+<dt id="mergait.rawreader.RawReader.get_music_df"><code class="name flex">
+<span>def <span class="ident">get_music_df</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get information about the state of the (Spotify) music player in a Pandas DataFrame.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>pandas.DataFrame</code></dt>
+<dd>
+<p>Pandas dataframe with music player data.</p>
+<p>Columns:
+Name: t, dtype: datetime64[ns]
+Timestamp [s] of sensor event
+Name: track_uri, dtype: object
+URI of the track being played
+Name: paused, dtype: bool
+Whether the player is playing or on pause
+Name: artist, dtype: object
+String of the artist name
+Name: track, dtype: object
+String of the track title
+Name: context_uri, dtype: object
+URI of the track context, usually a playlist
+Name: context, dtype: object
+String of the track context, usually a playlist
+Name: position, dtype: int64
+Position [s] of the playhead in the track
+Name: repeat_mode, dtype: object
+State of the repeat mode, 'off', 'track', 'context'
+Name: shuffle, dtype: bool
+State of the shuffle option
+Name: crossfade, dtype: bool
+State indicating whether crossfade is turned on</p>
+</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_music_df(self):
+    &#39;&#39;&#39;
+    Get information about the state of the (Spotify) music player in a Pandas DataFrame.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Pandas dataframe with music player data.
+
+        Columns:
+            Name: t, dtype: datetime64[ns]
+                Timestamp [s] of sensor event
+            Name: track_uri, dtype: object
+                URI of the track being played
+            Name: paused, dtype: bool
+                Whether the player is playing or on pause
+            Name: artist, dtype: object
+                String of the artist name
+            Name: track, dtype: object
+                String of the track title
+            Name: context_uri, dtype: object
+                URI of the track context, usually a playlist
+            Name: context, dtype: object
+                String of the track context, usually a playlist
+            Name: position, dtype: int64
+                Position [s] of the playhead in the track
+            Name: repeat_mode, dtype: object
+                State of the repeat mode, &#39;off&#39;, &#39;track&#39;, &#39;context&#39;
+            Name: shuffle, dtype: bool
+                State of the shuffle option
+            Name: crossfade, dtype: bool
+                State indicating whether crossfade is turned on
+
+    &#39;&#39;&#39;
+    return pd.DataFrame(self.music)</code></pre>
+</details>
+</dd>
+<dt id="mergait.rawreader.RawReader.get_phone_activity_df"><code class="name flex">
+<span>def <span class="ident">get_phone_activity_df</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get (i)Phone activity and pedometer related data in a Pandas DataFrame.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>pandas.DataFrame</code></dt>
+<dd>
+<p>Pandas dataframe with activity and pedometer data.</p>
+<p>Columns:
+Name: t, dtype: datetime64[ns]
+Timestamp [s] of sensor event
+Name: activity, dtype: object
+Detected activity 'stationary', 'walking', 'running'
+Name: speed, dtype: float64
+Speed of phone motion [m/s]
+Name: step, dtype: float64
+Number of steps taken since starting session
+Name: cadence, dtype: int64
+Step frequency [/min]
+Name: floors_ascended, dtype: int64
+Number of floors ascended since starting session
+Name: floors_descended, dtype: int64
+Number of floors descended since starting session</p>
+</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_phone_activity_df(self):
+    &#39;&#39;&#39;
+    Get (i)Phone activity and pedometer related data in a Pandas DataFrame.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Pandas dataframe with activity and pedometer data.
+
+        Columns:
+            Name: t, dtype: datetime64[ns]
+                Timestamp [s] of sensor event
+            Name: activity, dtype: object
+                Detected activity &#39;stationary&#39;, &#39;walking&#39;, &#39;running&#39;
+            Name: speed, dtype: float64
+                Speed of phone motion [m/s]
+            Name: step, dtype: float64
+                Number of steps taken since starting session
+            Name: cadence, dtype: int64
+                Step frequency [/min]
+            Name: floors_ascended, dtype: int64
+                Number of floors ascended since starting session
+            Name: floors_descended, dtype: int64
+                Number of floors descended since starting session
+                
+    &#39;&#39;&#39;
+    return pd.DataFrame(self.phone_activity)</code></pre>
+</details>
+</dd>
+<dt id="mergait.rawreader.RawReader.get_phone_location_df"><code class="name flex">
+<span>def <span class="ident">get_phone_location_df</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get GPS location data of the phone. Update frequency may vary.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>pandas.DataFrame</code></dt>
+<dd>
+<p>Pandas dataframe with GPS data.</p>
+<p>Columns:
+Name: t, dtype: datetime64[ns]
+Timestamp [s] of sensor event
+Name: lon, dtype: float64
+Longitude [deg]
+Name: lat, dtype: float64
+Latitude [deg]
+Name: lonlat_acc, dtype: float64
+Estimated horizontal accuracy of longitude and latitude [deg]
+Name: alt, dtype: float64
+Altitude [m]
+Name: alt_acc, dtype: float64
+Estimated vertical accuracy of altitude [deg]
+Name: course, dtype: float64
+Heading course in horizontal plane [deg]
+Name: alt_acc, dtype: float64
+Estimated course accuracy [deg]
+Name: speed, dtype: float64
+Speed of sensor [m/s]
+Name: speed_acc, dtype: float64
+Estimated accuracy of speed [m/s]</p>
+</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_phone_location_df(self):
+    &#39;&#39;&#39;
+    Get GPS location data of the phone. Update frequency may vary.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Pandas dataframe with GPS data.
+
+        Columns:
+            Name: t, dtype: datetime64[ns]
+                Timestamp [s] of sensor event
+            Name: lon, dtype: float64 
+                Longitude [deg]
+            Name: lat, dtype: float64
+                Latitude [deg]
+            Name: lonlat_acc, dtype: float64
+                Estimated horizontal accuracy of longitude and latitude [deg]
+            Name: alt, dtype: float64
+                Altitude [m]
+            Name: alt_acc, dtype: float64
+                Estimated vertical accuracy of altitude [deg]
+            Name: course, dtype: float64
+                Heading course in horizontal plane [deg]
+            Name: alt_acc, dtype: float64
+                Estimated course accuracy [deg]
+            Name: speed, dtype: float64
+                Speed of sensor [m/s]
+            Name: speed_acc, dtype: float64
+                Estimated accuracy of speed [m/s]
+                
+    &#39;&#39;&#39;
+    return pd.DataFrame(self.phone_location)</code></pre>
+</details>
+</dd>
+<dt id="mergait.rawreader.RawReader.get_phone_motion_df"><code class="name flex">
+<span>def <span class="ident">get_phone_motion_df</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get motion data of the IMU sensor of the (i)Phone in a Pandas DataFrame.
+For the iPhone the data is sampled at 100Hz.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>pandas.DataFrame</code></dt>
+<dd>
+<p>Pandas dataframe with real-time IMU data</p>
+<p>Columns:
+Name: t, dtype: datetime64[ns]
+Timestamp [s] of sensor event
+Name: ax, dtype: float64
+Acceleration (including gravity) in the x-direction [G]
+Name: ay, dtype: float64
+Acceleration (including gravity) in the y-direction [G]
+Name: az, dtype: float64
+Acceleration (including gravity) in the z-direction [G]
+Name: gx, dtype: float64
+Gravity acceleration in the x-direction [G]
+Name: gy, dtype: float64
+Gravity acceleration in the y-direction [G]
+Name: gz, dtype: float64
+Gravity acceleration in the z-direction [G]
+Name: a_vert, dtype: float64
+Acceleration in vertical direction [G], this is inner product of a and g
+Name: rx, dtype: float64
+Rotation velocity [deg/s] in x-direction
+Name: ry, dtype: float64
+Rotation velocity [deg/s] in y-direction
+Name: rz, dtype: float64
+Rotation velocity [deg/s] in z-direction</p>
+</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_phone_motion_df(self):
+    &#39;&#39;&#39;
+    Get motion data of the IMU sensor of the (i)Phone in a Pandas DataFrame.
+    For the iPhone the data is sampled at 100Hz.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Pandas dataframe with real-time IMU data
+
+        Columns:
+            Name: t, dtype: datetime64[ns]
+                Timestamp [s] of sensor event
+            Name: ax, dtype: float64 
+                Acceleration (including gravity) in the x-direction [G]
+            Name: ay, dtype: float64 
+                Acceleration (including gravity) in the y-direction [G]
+            Name: az, dtype: float64 
+                Acceleration (including gravity) in the z-direction [G]
+            Name: gx, dtype: float64 
+                Gravity acceleration in the x-direction [G]
+            Name: gy, dtype: float64 
+                Gravity acceleration in the y-direction [G]
+            Name: gz, dtype: float64 
+                Gravity acceleration in the z-direction [G]
+            Name: a_vert, dtype: float64
+                Acceleration in vertical direction [G], this is inner product of a and g
+            Name: rx, dtype: float64 
+                Rotation velocity [deg/s] in x-direction
+            Name: ry, dtype: float64 
+                Rotation velocity [deg/s] in y-direction
+            Name: rz, dtype: float64 
+                Rotation velocity [deg/s] in z-direction
+                
+    &#39;&#39;&#39;
+    return pd.DataFrame(self.phone_motion)</code></pre>
+</details>
+</dd>
+<dt id="mergait.rawreader.RawReader.get_timestamp_range"><code class="name flex">
+<span>def <span class="ident">get_timestamp_range</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the minimum and maximum timestamp values in the data.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>list</code></strong> :&ensp;<code>integer</code></dt>
+<dd>Minimum and maximum value of the timestamp in the data</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_timestamp_range(self):
+    &#39;&#39;&#39;
+    Get the minimum and maximum timestamp values in the data.
+
+    Returns
+    -------
+    list: integer
+        Minimum and maximum value of the timestamp in the data
+
+    &#39;&#39;&#39;
+    return self.t_range</code></pre>
+</details>
+</dd>
+<dt id="mergait.rawreader.RawReader.update_with"><code class="name flex">
+<span>def <span class="ident">update_with</span></span>(<span>self, msg)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Updates the class state with a new message from the raw data file.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>msg</code></strong> :&ensp;<code>dict</code></dt>
+<dd>The dictionary representing the data message from the raw file.
+Note, the raw JSON line must be first converted to a dict.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_with(self, msg):
+    &#39;&#39;&#39;
+    Updates the class state with a new message from the raw data file.
+
+    Parameters
+    ----------
+    msg : dict
+        The dictionary representing the data message from the raw file. 
+        Note, the raw JSON line must be first converted to a dict.
+
+    &#39;&#39;&#39;
+    if &#39;t&#39; in msg:
+        t = msg[&#39;t&#39;]
+        self.t_range = [t, t
+                        ] if self.t_range == [] else [self.t_range[0], t]
+
+    if msg[&#39;type&#39;] == &#39;iPhone-pedo&#39;:
+        self.phone_activity.append({
+            &#39;t&#39;:
+            pd.Timestamp(msg[&#39;t&#39;], unit=&#39;s&#39;),
+            &#39;activity&#39;:
+            msg[&#39;pedo&#39;][&#39;activity&#39;],
+            &#39;speed&#39;:
+            0 if msg[&#39;pedo&#39;][&#39;pace&#39;] == 0 else 1.0 / msg[&#39;pedo&#39;][&#39;pace&#39;],
+            &#39;step&#39;:
+            msg[&#39;pedo&#39;][&#39;step&#39;],
+            &#39;cadence&#39;:
+            msg[&#39;pedo&#39;][&#39;cadence&#39;] * 60,
+            &#39;floors_ascended&#39;:
+            msg[&#39;pedo&#39;][&#39;floorsAscended&#39;]
+            if &#39;floorsAscended&#39; in msg[&#39;pedo&#39;] else 0,
+            &#39;floors_descended&#39;:
+            msg[&#39;pedo&#39;][&#39;floorsDescended&#39;]
+            if &#39;floorsDescended&#39; in msg[&#39;pedo&#39;] else 0
+        })
+
+    if msg[&#39;type&#39;] == &#39;iPhone-motion&#39;:
+        gx = msg[&#39;motion&#39;][&#39;ag&#39;][0] - msg[&#39;motion&#39;][&#39;a&#39;][0]
+        gy = msg[&#39;motion&#39;][&#39;ag&#39;][1] - msg[&#39;motion&#39;][&#39;a&#39;][1]
+        gz = msg[&#39;motion&#39;][&#39;ag&#39;][2] - msg[&#39;motion&#39;][&#39;a&#39;][2]
+        a_vert = msg[&#39;motion&#39;][&#39;a&#39;][0] * gx + msg[&#39;motion&#39;][&#39;a&#39;][
+            1] * gy + msg[&#39;motion&#39;][&#39;a&#39;][2] * gz
+
+        self.phone_motion.append({
+            &#39;t&#39;: pd.Timestamp(msg[&#39;t&#39;], unit=&#39;s&#39;),
+            &#39;ax&#39;: msg[&#39;motion&#39;][&#39;a&#39;][0],
+            &#39;ay&#39;: msg[&#39;motion&#39;][&#39;a&#39;][1],
+            &#39;az&#39;: msg[&#39;motion&#39;][&#39;a&#39;][2],
+            &#39;gx&#39;: gx,
+            &#39;gy&#39;: gy,
+            &#39;gz&#39;: gz,
+            &#39;a_vert&#39;: a_vert,
+            &#39;rx&#39;: msg[&#39;motion&#39;][&#39;r&#39;][0],
+            &#39;ry&#39;: msg[&#39;motion&#39;][&#39;r&#39;][1],
+            &#39;rz&#39;: msg[&#39;motion&#39;][&#39;r&#39;][2],
+        })
+
+    if msg[&#39;type&#39;] == &#39;iPhone-location&#39;:
+        self.phone_location.append({
+            &#39;t&#39;:
+            pd.Timestamp(msg[&#39;location&#39;][&#39;timestamp&#39;], unit=&#39;s&#39;),
+            &#39;lon&#39;:
+            msg[&#39;location&#39;][&#39;coordinate&#39;][&#39;lon&#39;],
+            &#39;lat&#39;:
+            msg[&#39;location&#39;][&#39;coordinate&#39;][&#39;lat&#39;],
+            &#39;lonlat_acc&#39;:
+            msg[&#39;location&#39;][&#39;coordinate&#39;][&#39;acc&#39;],
+            &#39;alt&#39;:
+            msg[&#39;location&#39;][&#39;altitude&#39;][&#39;val&#39;],
+            &#39;alt_acc&#39;:
+            msg[&#39;location&#39;][&#39;altitude&#39;][&#39;acc&#39;],
+            &#39;course&#39;:
+            msg[&#39;location&#39;][&#39;course&#39;][&#39;val&#39;],
+            &#39;course_acc&#39;:
+            msg[&#39;location&#39;][&#39;course&#39;][&#39;acc&#39;],
+            &#39;speed&#39;:
+            msg[&#39;location&#39;][&#39;speed&#39;][&#39;val&#39;],
+            &#39;speed_acc&#39;:
+            msg[&#39;location&#39;][&#39;speed&#39;][&#39;acc&#39;],
+        })
+
+    if msg[&#39;type&#39;] == &#39;RunScribe-speedcadence&#39;:
+        self.footpods_sc.append({
+            &#39;t&#39;: pd.Timestamp(msg[&#39;t&#39;], unit=&#39;s&#39;),
+            &#39;foot&#39;: msg[&#39;runscribe&#39;][&#39;foot&#39;],
+            &#39;cadence&#39;: msg[&#39;rsc&#39;][&#39;cadence&#39;],
+            &#39;speed&#39;: msg[&#39;rsc&#39;][&#39;speed&#39;]
+        })
+
+    if msg[&#39;type&#39;] == &#39;RunScribe-metrics&#39;:
+        self.footpods.append({
+            &#39;t&#39;: pd.Timestamp(msg[&#39;t&#39;], unit=&#39;s&#39;),
+            &#39;foot&#39;: msg[&#39;runscribe&#39;][&#39;foot&#39;],
+            &#39;pronation&#39;: msg[&#39;metrics&#39;][&#39;pronation&#39;],
+            &#39;braking&#39;: msg[&#39;metrics&#39;][&#39;braking&#39;],
+            &#39;impact&#39;: msg[&#39;metrics&#39;][&#39;impact&#39;],
+            &#39;contact_time&#39;: msg[&#39;metrics&#39;][&#39;contactTime&#39;],
+            &#39;flight_ratio&#39;: msg[&#39;metrics&#39;][&#39;flightRatio&#39;],
+            &#39;strike&#39;: msg[&#39;metrics&#39;][&#39;strikeType&#39;],
+            &#39;power&#39;: msg[&#39;metrics&#39;][&#39;power&#39;]
+        })
+
+    if msg[&#39;type&#39;] == &#39;Spotify&#39; and &#39;playstate&#39; in msg:
+
+        if &#39;name&#39; in msg[&#39;playstate&#39;]:
+            split_track = msg[&#39;playstate&#39;][&#39;name&#39;].split(&#39;-&#39;, 2)
+            msg[&#39;playstate&#39;][&#39;artist&#39;] = split_track[0].strip()
+            msg[&#39;playstate&#39;][&#39;track&#39;] = split_track[1].strip()
+
+        self.music.append({
+            &#39;t&#39;:
+            pd.Timestamp(msg[&#39;t&#39;], unit=&#39;s&#39;),
+            &#39;track_uri&#39;:
+            msg[&#39;playstate&#39;][&#39;uri&#39;],
+            &#39;paused&#39;:
+            msg[&#39;playstate&#39;][&#39;paused&#39;],
+            &#39;artist&#39;:
+            msg[&#39;playstate&#39;][&#39;artist&#39;],
+            &#39;track&#39;:
+            msg[&#39;playstate&#39;][&#39;track&#39;],
+            &#39;context_uri&#39;:
+            msg[&#39;playstate&#39;][&#39;contextUri&#39;],
+            &#39;context&#39;:
+            msg[&#39;playstate&#39;][&#39;contextTitle&#39;],
+            &#39;position&#39;:
+            msg[&#39;playstate&#39;][&#39;position&#39;] / 1000,
+            &#39;repeat_mode&#39;:
+            msg[&#39;playstate&#39;][&#39;repeatMode&#39;]
+            if &#39;repeatMode&#39; in msg else &#39;off&#39;,
+            &#39;shuffle&#39;:
+            msg[&#39;playstate&#39;][&#39;shuffle&#39;] if &#39;shuffle&#39; in msg else False,
+            &#39;crossfade&#39;:
+            msg[&#39;playstate&#39;][&#39;crossfadeState&#39;]
+            if &#39;crossfadeState&#39; in msg else False,
+        })
+
+    return True</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="mergait" href="index.html">mergait</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="mergait.rawreader.RawReader" href="#mergait.rawreader.RawReader">RawReader</a></code></h4>
+<ul class="">
+<li><code><a title="mergait.rawreader.RawReader.get_footpods_df" href="#mergait.rawreader.RawReader.get_footpods_df">get_footpods_df</a></code></li>
+<li><code><a title="mergait.rawreader.RawReader.get_footpods_sc_df" href="#mergait.rawreader.RawReader.get_footpods_sc_df">get_footpods_sc_df</a></code></li>
+<li><code><a title="mergait.rawreader.RawReader.get_music_df" href="#mergait.rawreader.RawReader.get_music_df">get_music_df</a></code></li>
+<li><code><a title="mergait.rawreader.RawReader.get_phone_activity_df" href="#mergait.rawreader.RawReader.get_phone_activity_df">get_phone_activity_df</a></code></li>
+<li><code><a title="mergait.rawreader.RawReader.get_phone_location_df" href="#mergait.rawreader.RawReader.get_phone_location_df">get_phone_location_df</a></code></li>
+<li><code><a title="mergait.rawreader.RawReader.get_phone_motion_df" href="#mergait.rawreader.RawReader.get_phone_motion_df">get_phone_motion_df</a></code></li>
+<li><code><a title="mergait.rawreader.RawReader.get_timestamp_range" href="#mergait.rawreader.RawReader.get_timestamp_range">get_timestamp_range</a></code></li>
+<li><code><a title="mergait.rawreader.RawReader.update_with" href="#mergait.rawreader.RawReader.update_with">update_with</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

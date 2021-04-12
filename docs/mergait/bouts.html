@@ -1,0 +1,749 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>mergait.bouts API documentation</title>
+<meta name="description" content="Bout utility methods …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>mergait.bouts</code></h1>
+</header>
+<section id="section-intro">
+<p>Bout utility methods</p>
+<p>Methods for extracting bouts from DataFrames and annotating other DataFrames
+with this bout information.</p>
+<p>A bout is a time range within a larger set of data that shares a particular feature.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34; Bout utility methods
+
+Methods for extracting bouts from DataFrames and annotating other DataFrames
+with this bout information.
+
+A bout is a time range within a larger set of data that shares a particular feature.
+&#34;&#34;&#34;
+
+import pandas as pd
+
+
+def extract_bouts(
+    df, valid, range_column=&#34;t&#34;, valid_column=&#34;valid&#34;, keep_invalid=True, by=[]
+):
+    &#34;&#34;&#34;
+    Extract from a Pandas DataFrame a list of bouts, where each bout is indicated by a minimum and maximum
+    timestamp range and determined by valid ranges.
+
+    Parameters
+    ----------
+    df : pandas.Dataframe
+        The data to extract the bouts from
+    valid : pandas.Series
+        A series of bool values indicating what rows are considered valid and invalid
+    range_column : str
+        Optional string indicating the column in df for the timestamp
+    valid_column : str
+        Optional string indicating the name in the output DataFrame indicating the validness of the bout
+    keep_invalid : bool
+        Optional value indicating whether to keep invalid bouts in the returned DataFrame
+    by : list
+        Optional list of columns to group the data by, before extracting the bouts, meaning that bout
+        boundaries are both determined by the valid column and the group boundaries.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Index:
+            RangeIndex
+        Columns:
+            Name: count, dtype: int64
+                Number of rows in df belonging to the bout
+            Name: t_start, dtype: datetime64[ns]
+                Starting timestamp of the bout (t_ prefix depends on range_column)
+            Name: t_end, dtype: datetime64[ns]
+                End timestamp of the bout (t_ prefix depends on range_column)
+            Name: valid, dtype: bool
+                Whether the bout is valid according to given criterium
+    &#34;&#34;&#34;
+    df[&#34;_filter&#34;] = valid.loc[df.index]
+
+    dfBool = valid != valid.shift()
+    dfCumsum = dfBool.cumsum()
+
+    by_list = [dfCumsum]
+    for b in by:
+        by_list.append(b)
+
+    groups = df.groupby(by=by_list, sort=False)
+
+    bouts = groups.agg({range_column: [&#34;count&#34;, &#34;min&#34;, &#34;max&#34;], &#34;_filter&#34;: [&#34;first&#34;]})
+    bouts.columns = [
+        &#34;count&#34;,
+        range_column + &#34;_start&#34;,
+        range_column + &#34;_end&#34;,
+        valid_column,
+    ]
+
+    df.drop(columns=[&#34;_filter&#34;], inplace=True)
+
+    if not keep_invalid:
+        bouts = bouts[bouts[valid_column]]
+
+    bouts.reset_index(drop=True, inplace=True)
+
+    return bouts
+
+
+def with_padded_bout_window(bouts, window=[0, 0], range_column=&#34;t&#34;):
+    &#34;&#34;&#34;
+    Pad the values in a Pandas DataFrame created with `extract_bouts` with a time window.
+
+    Parameters
+    ----------
+    bouts : pandas.Dataframe
+        The DataFrame containing the bouts
+    window : list
+        The number of seconds to add to the starting and end time of the bout.
+    range_column : str
+        Optional string indicating the column in original for the timestamp. This results in a prefix
+        in the bouts DataFrame, timestamp column &#39;t&#39; leads to bout columns &#39;t_min&#39; and &#39;t_max&#39;.
+
+    Returns
+    -------
+    pandas.DataFrame
+        A copy of the bouts DataFrame with padded min and max timestamp values
+    &#34;&#34;&#34;
+    bouts = bouts.copy()
+    bouts[range_column + &#34;_start&#34;] = bouts[range_column + &#34;_start&#34;] + pd.to_timedelta(
+        window[0], unit=&#34;s&#34;
+    )
+    bouts[range_column + &#34;_end&#34;] = bouts[range_column + &#34;_end&#34;] + pd.to_timedelta(
+        window[1], unit=&#34;s&#34;
+    )
+
+    return bouts
+
+
+def add_bouts_as_column(
+    df,
+    bouts,
+    new_column=&#34;bout&#34;,
+    range_column=&#34;t&#34;,
+    valid_column=&#34;valid&#34;,
+    value=&#34;column&#34;,
+    reset_value=pd.Series(dtype=&#34;float64&#34;),
+):
+    &#34;&#34;&#34;
+    Applies the time ranges in a bouts DataFrame created with `extract_bouts` to the rows in another DataFrame, by
+    adding bout data to a new column.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        The DataFrame containing the data that has to be annotated by bout information
+    bouts : pandas.Dataframe
+        The DataFrame containing the bouts
+    new_column : str
+        The optional column name to add with bout information
+    range_column : str
+        Optional string indicating the column in original for the timestamp. This results in a prefix
+        in the bouts DataFrame, timestamp column &#39;t&#39; leads to bout columns &#39;t_start&#39; and &#39;t_end&#39;.
+    valid_column : str
+        Optional string indicating the name in the output DataFrame indicating the validness of the bout
+    value : object
+        Optional value to insert for a valid bout. If &#39;index&#39; it takes the bout index as bout identifier,
+        &#39;column&#39; fills in the valid column else sets the constant value given.
+    reset_value : object
+        Optional default value set to the new bouts column if it does not yet exist
+
+    Returns
+    -------
+    pandas.DataFrame
+        A reference to the updated df DataFrame. The original DataFrame is updated in place.
+    &#34;&#34;&#34;
+    if new_column not in df:
+        df[new_column] = reset_value
+
+    for idx, bout in bouts.iterrows():
+        df.loc[
+            (df[range_column] &gt;= bout[range_column + &#34;_start&#34;])
+            &amp; (df[range_column] &lt; bout[range_column + &#34;_end&#34;]),
+            new_column,
+        ] = (
+            bout[valid_column]
+            if value == &#34;column&#34;
+            else idx
+            if value == &#34;index&#34;
+            else value
+        )
+
+    return df
+
+
+def interpolate_bouts_as_column(
+    df,
+    df_values,
+    bouts,
+    new_column=&#34;bout&#34;,
+    range_column=&#34;t&#34;,
+    valid_column=&#34;valid&#34;,
+    value_column=&#34;position&#34;,
+    reset_value=pd.Series(dtype=&#34;float64&#34;),
+):
+    &#34;&#34;&#34;
+    Applies the time ranges in a bouts DataFrame created with `extract_bouts` to the rows in another DataFrame, by
+    adding bout data to a new column.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        The DataFrame containing the data that has to be annotated by bout information
+    bouts : pandas.Dataframe
+        The DataFrame containing the bouts
+    df_values : pandas.DataFrame
+        The DataFrame containing the values to interpolate into df
+    value_column : str
+        The column in df_values with the values to interpolate into df
+    new_column : str
+        The optional column name to add with bout information
+    range_column : str
+        Optional string indicating the column in original for the timestamp. This results in a prefix
+        in the bouts DataFrame, timestamp column &#39;t&#39; leads to bout columns &#39;t_start&#39; and &#39;t_end&#39;.
+    valid_column : str
+        Optional string indicating the name in the output DataFrame indicating the validness of the bout
+    reset_value : object
+        Optional default value set to the new bouts column if it does not yet exist
+
+    Returns
+    -------
+    pandas.DataFrame
+        A reference to the updated df DataFrame. The original DataFrame is updated in place.
+    &#34;&#34;&#34;
+
+    if new_column not in df:
+        df[new_column] = reset_value
+
+    for idx, bout in bouts.iterrows():
+        bout_data = df[
+            (df[range_column] &gt;= bout[range_column + &#34;_start&#34;])
+            &amp; (df[range_column] &lt; bout[range_column + &#34;_end&#34;])
+        ]
+
+        t_data = pd.to_numeric(bout_data[range_column])
+        t_bout, val_bout = (
+            pd.to_numeric(df_values[range_column]),
+            df_values[value_column],
+        )
+
+        from scipy import interpolate
+
+        f = interpolate.interp1d(t_bout, val_bout, fill_value=&#34;extrapolate&#34;)
+
+        val_data = [f(t) for t in t_data]
+
+        df[new_column].iloc[bout_data.index] = val_data
+
+    # changes the df inplace but return dataframe for chaining purposes
+    return df
+
+
+def select_range(df, window, range_column=&#34;t&#34;, include_end=True):
+    &#34;&#34;&#34;
+    Select a range of data for multiple Pandas DataFrames at once.
+    It was designed for using it with the output of the bout methods.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame/list
+        The (list of) DataFrame to use
+    window : list
+        A 2-list containing the minimum and maximum value of the range to select
+    range_column : str
+        Optional column in the DataFrame to use for the range (usually timestamp)
+    include_end : bool
+        Optional whether to include the max value in the range
+
+    Returns
+    -------
+    list(pandas.DataFrame)
+        A list of DataFrames selections
+    &#34;&#34;&#34;
+
+    if not isinstance(df, list):
+        df = [df]
+
+    return [
+        dff[(dff[range_column] &gt;= window[0]) &amp; (dff[range_column] &lt;= window[1])]
+        if include_end
+        else dff[(dff[range_column] &gt;= window[0]) &amp; (dff[range_column] &lt; window[1])]
+        for dff in df
+    ]</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="mergait.bouts.add_bouts_as_column"><code class="name flex">
+<span>def <span class="ident">add_bouts_as_column</span></span>(<span>df, bouts, new_column='bout', range_column='t', valid_column='valid', value='column', reset_value=Series([], dtype: float64))</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Applies the time ranges in a bouts DataFrame created with <code><a title="mergait.bouts.extract_bouts" href="#mergait.bouts.extract_bouts">extract_bouts()</a></code> to the rows in another DataFrame, by
+adding bout data to a new column.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>df</code></strong> :&ensp;<code>pandas.DataFrame</code></dt>
+<dd>The DataFrame containing the data that has to be annotated by bout information</dd>
+<dt><strong><code>bouts</code></strong> :&ensp;<code>pandas.Dataframe</code></dt>
+<dd>The DataFrame containing the bouts</dd>
+<dt><strong><code>new_column</code></strong> :&ensp;<code>str</code></dt>
+<dd>The optional column name to add with bout information</dd>
+<dt><strong><code>range_column</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optional string indicating the column in original for the timestamp. This results in a prefix
+in the bouts DataFrame, timestamp column 't' leads to bout columns 't_start' and 't_end'.</dd>
+<dt><strong><code>valid_column</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optional string indicating the name in the output DataFrame indicating the validness of the bout</dd>
+<dt><strong><code>value</code></strong> :&ensp;<code>object</code></dt>
+<dd>Optional value to insert for a valid bout. If 'index' it takes the bout index as bout identifier,
+'column' fills in the valid column else sets the constant value given.</dd>
+<dt><strong><code>reset_value</code></strong> :&ensp;<code>object</code></dt>
+<dd>Optional default value set to the new bouts column if it does not yet exist</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>pandas.DataFrame</code></dt>
+<dd>A reference to the updated df DataFrame. The original DataFrame is updated in place.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_bouts_as_column(
+    df,
+    bouts,
+    new_column=&#34;bout&#34;,
+    range_column=&#34;t&#34;,
+    valid_column=&#34;valid&#34;,
+    value=&#34;column&#34;,
+    reset_value=pd.Series(dtype=&#34;float64&#34;),
+):
+    &#34;&#34;&#34;
+    Applies the time ranges in a bouts DataFrame created with `extract_bouts` to the rows in another DataFrame, by
+    adding bout data to a new column.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        The DataFrame containing the data that has to be annotated by bout information
+    bouts : pandas.Dataframe
+        The DataFrame containing the bouts
+    new_column : str
+        The optional column name to add with bout information
+    range_column : str
+        Optional string indicating the column in original for the timestamp. This results in a prefix
+        in the bouts DataFrame, timestamp column &#39;t&#39; leads to bout columns &#39;t_start&#39; and &#39;t_end&#39;.
+    valid_column : str
+        Optional string indicating the name in the output DataFrame indicating the validness of the bout
+    value : object
+        Optional value to insert for a valid bout. If &#39;index&#39; it takes the bout index as bout identifier,
+        &#39;column&#39; fills in the valid column else sets the constant value given.
+    reset_value : object
+        Optional default value set to the new bouts column if it does not yet exist
+
+    Returns
+    -------
+    pandas.DataFrame
+        A reference to the updated df DataFrame. The original DataFrame is updated in place.
+    &#34;&#34;&#34;
+    if new_column not in df:
+        df[new_column] = reset_value
+
+    for idx, bout in bouts.iterrows():
+        df.loc[
+            (df[range_column] &gt;= bout[range_column + &#34;_start&#34;])
+            &amp; (df[range_column] &lt; bout[range_column + &#34;_end&#34;]),
+            new_column,
+        ] = (
+            bout[valid_column]
+            if value == &#34;column&#34;
+            else idx
+            if value == &#34;index&#34;
+            else value
+        )
+
+    return df</code></pre>
+</details>
+</dd>
+<dt id="mergait.bouts.extract_bouts"><code class="name flex">
+<span>def <span class="ident">extract_bouts</span></span>(<span>df, valid, range_column='t', valid_column='valid', keep_invalid=True, by=[])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extract from a Pandas DataFrame a list of bouts, where each bout is indicated by a minimum and maximum
+timestamp range and determined by valid ranges.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>df</code></strong> :&ensp;<code>pandas.Dataframe</code></dt>
+<dd>The data to extract the bouts from</dd>
+<dt><strong><code>valid</code></strong> :&ensp;<code>pandas.Series</code></dt>
+<dd>A series of bool values indicating what rows are considered valid and invalid</dd>
+<dt><strong><code>range_column</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optional string indicating the column in df for the timestamp</dd>
+<dt><strong><code>valid_column</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optional string indicating the name in the output DataFrame indicating the validness of the bout</dd>
+<dt><strong><code>keep_invalid</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Optional value indicating whether to keep invalid bouts in the returned DataFrame</dd>
+<dt><strong><code>by</code></strong> :&ensp;<code>list</code></dt>
+<dd>Optional list of columns to group the data by, before extracting the bouts, meaning that bout
+boundaries are both determined by the valid column and the group boundaries.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>pandas.DataFrame</code></dt>
+<dd>Index:
+RangeIndex
+Columns:
+Name: count, dtype: int64
+Number of rows in df belonging to the bout
+Name: t_start, dtype: datetime64[ns]
+Starting timestamp of the bout (t_ prefix depends on range_column)
+Name: t_end, dtype: datetime64[ns]
+End timestamp of the bout (t_ prefix depends on range_column)
+Name: valid, dtype: bool
+Whether the bout is valid according to given criterium</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def extract_bouts(
+    df, valid, range_column=&#34;t&#34;, valid_column=&#34;valid&#34;, keep_invalid=True, by=[]
+):
+    &#34;&#34;&#34;
+    Extract from a Pandas DataFrame a list of bouts, where each bout is indicated by a minimum and maximum
+    timestamp range and determined by valid ranges.
+
+    Parameters
+    ----------
+    df : pandas.Dataframe
+        The data to extract the bouts from
+    valid : pandas.Series
+        A series of bool values indicating what rows are considered valid and invalid
+    range_column : str
+        Optional string indicating the column in df for the timestamp
+    valid_column : str
+        Optional string indicating the name in the output DataFrame indicating the validness of the bout
+    keep_invalid : bool
+        Optional value indicating whether to keep invalid bouts in the returned DataFrame
+    by : list
+        Optional list of columns to group the data by, before extracting the bouts, meaning that bout
+        boundaries are both determined by the valid column and the group boundaries.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Index:
+            RangeIndex
+        Columns:
+            Name: count, dtype: int64
+                Number of rows in df belonging to the bout
+            Name: t_start, dtype: datetime64[ns]
+                Starting timestamp of the bout (t_ prefix depends on range_column)
+            Name: t_end, dtype: datetime64[ns]
+                End timestamp of the bout (t_ prefix depends on range_column)
+            Name: valid, dtype: bool
+                Whether the bout is valid according to given criterium
+    &#34;&#34;&#34;
+    df[&#34;_filter&#34;] = valid.loc[df.index]
+
+    dfBool = valid != valid.shift()
+    dfCumsum = dfBool.cumsum()
+
+    by_list = [dfCumsum]
+    for b in by:
+        by_list.append(b)
+
+    groups = df.groupby(by=by_list, sort=False)
+
+    bouts = groups.agg({range_column: [&#34;count&#34;, &#34;min&#34;, &#34;max&#34;], &#34;_filter&#34;: [&#34;first&#34;]})
+    bouts.columns = [
+        &#34;count&#34;,
+        range_column + &#34;_start&#34;,
+        range_column + &#34;_end&#34;,
+        valid_column,
+    ]
+
+    df.drop(columns=[&#34;_filter&#34;], inplace=True)
+
+    if not keep_invalid:
+        bouts = bouts[bouts[valid_column]]
+
+    bouts.reset_index(drop=True, inplace=True)
+
+    return bouts</code></pre>
+</details>
+</dd>
+<dt id="mergait.bouts.interpolate_bouts_as_column"><code class="name flex">
+<span>def <span class="ident">interpolate_bouts_as_column</span></span>(<span>df, df_values, bouts, new_column='bout', range_column='t', valid_column='valid', value_column='position', reset_value=Series([], dtype: float64))</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Applies the time ranges in a bouts DataFrame created with <code><a title="mergait.bouts.extract_bouts" href="#mergait.bouts.extract_bouts">extract_bouts()</a></code> to the rows in another DataFrame, by
+adding bout data to a new column.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>df</code></strong> :&ensp;<code>pandas.DataFrame</code></dt>
+<dd>The DataFrame containing the data that has to be annotated by bout information</dd>
+<dt><strong><code>bouts</code></strong> :&ensp;<code>pandas.Dataframe</code></dt>
+<dd>The DataFrame containing the bouts</dd>
+<dt><strong><code>df_values</code></strong> :&ensp;<code>pandas.DataFrame</code></dt>
+<dd>The DataFrame containing the values to interpolate into df</dd>
+<dt><strong><code>value_column</code></strong> :&ensp;<code>str</code></dt>
+<dd>The column in df_values with the values to interpolate into df</dd>
+<dt><strong><code>new_column</code></strong> :&ensp;<code>str</code></dt>
+<dd>The optional column name to add with bout information</dd>
+<dt><strong><code>range_column</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optional string indicating the column in original for the timestamp. This results in a prefix
+in the bouts DataFrame, timestamp column 't' leads to bout columns 't_start' and 't_end'.</dd>
+<dt><strong><code>valid_column</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optional string indicating the name in the output DataFrame indicating the validness of the bout</dd>
+<dt><strong><code>reset_value</code></strong> :&ensp;<code>object</code></dt>
+<dd>Optional default value set to the new bouts column if it does not yet exist</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>pandas.DataFrame</code></dt>
+<dd>A reference to the updated df DataFrame. The original DataFrame is updated in place.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def interpolate_bouts_as_column(
+    df,
+    df_values,
+    bouts,
+    new_column=&#34;bout&#34;,
+    range_column=&#34;t&#34;,
+    valid_column=&#34;valid&#34;,
+    value_column=&#34;position&#34;,
+    reset_value=pd.Series(dtype=&#34;float64&#34;),
+):
+    &#34;&#34;&#34;
+    Applies the time ranges in a bouts DataFrame created with `extract_bouts` to the rows in another DataFrame, by
+    adding bout data to a new column.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        The DataFrame containing the data that has to be annotated by bout information
+    bouts : pandas.Dataframe
+        The DataFrame containing the bouts
+    df_values : pandas.DataFrame
+        The DataFrame containing the values to interpolate into df
+    value_column : str
+        The column in df_values with the values to interpolate into df
+    new_column : str
+        The optional column name to add with bout information
+    range_column : str
+        Optional string indicating the column in original for the timestamp. This results in a prefix
+        in the bouts DataFrame, timestamp column &#39;t&#39; leads to bout columns &#39;t_start&#39; and &#39;t_end&#39;.
+    valid_column : str
+        Optional string indicating the name in the output DataFrame indicating the validness of the bout
+    reset_value : object
+        Optional default value set to the new bouts column if it does not yet exist
+
+    Returns
+    -------
+    pandas.DataFrame
+        A reference to the updated df DataFrame. The original DataFrame is updated in place.
+    &#34;&#34;&#34;
+
+    if new_column not in df:
+        df[new_column] = reset_value
+
+    for idx, bout in bouts.iterrows():
+        bout_data = df[
+            (df[range_column] &gt;= bout[range_column + &#34;_start&#34;])
+            &amp; (df[range_column] &lt; bout[range_column + &#34;_end&#34;])
+        ]
+
+        t_data = pd.to_numeric(bout_data[range_column])
+        t_bout, val_bout = (
+            pd.to_numeric(df_values[range_column]),
+            df_values[value_column],
+        )
+
+        from scipy import interpolate
+
+        f = interpolate.interp1d(t_bout, val_bout, fill_value=&#34;extrapolate&#34;)
+
+        val_data = [f(t) for t in t_data]
+
+        df[new_column].iloc[bout_data.index] = val_data
+
+    # changes the df inplace but return dataframe for chaining purposes
+    return df</code></pre>
+</details>
+</dd>
+<dt id="mergait.bouts.select_range"><code class="name flex">
+<span>def <span class="ident">select_range</span></span>(<span>df, window, range_column='t', include_end=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Select a range of data for multiple Pandas DataFrames at once.
+It was designed for using it with the output of the bout methods.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>df</code></strong> :&ensp;<code>pandas.DataFrame/list</code></dt>
+<dd>The (list of) DataFrame to use</dd>
+<dt><strong><code>window</code></strong> :&ensp;<code>list</code></dt>
+<dd>A 2-list containing the minimum and maximum value of the range to select</dd>
+<dt><strong><code>range_column</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optional column in the DataFrame to use for the range (usually timestamp)</dd>
+<dt><strong><code>include_end</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Optional whether to include the max value in the range</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list(pandas.DataFrame)</code></dt>
+<dd>A list of DataFrames selections</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def select_range(df, window, range_column=&#34;t&#34;, include_end=True):
+    &#34;&#34;&#34;
+    Select a range of data for multiple Pandas DataFrames at once.
+    It was designed for using it with the output of the bout methods.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame/list
+        The (list of) DataFrame to use
+    window : list
+        A 2-list containing the minimum and maximum value of the range to select
+    range_column : str
+        Optional column in the DataFrame to use for the range (usually timestamp)
+    include_end : bool
+        Optional whether to include the max value in the range
+
+    Returns
+    -------
+    list(pandas.DataFrame)
+        A list of DataFrames selections
+    &#34;&#34;&#34;
+
+    if not isinstance(df, list):
+        df = [df]
+
+    return [
+        dff[(dff[range_column] &gt;= window[0]) &amp; (dff[range_column] &lt;= window[1])]
+        if include_end
+        else dff[(dff[range_column] &gt;= window[0]) &amp; (dff[range_column] &lt; window[1])]
+        for dff in df
+    ]</code></pre>
+</details>
+</dd>
+<dt id="mergait.bouts.with_padded_bout_window"><code class="name flex">
+<span>def <span class="ident">with_padded_bout_window</span></span>(<span>bouts, window=[0, 0], range_column='t')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Pad the values in a Pandas DataFrame created with <code><a title="mergait.bouts.extract_bouts" href="#mergait.bouts.extract_bouts">extract_bouts()</a></code> with a time window.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>bouts</code></strong> :&ensp;<code>pandas.Dataframe</code></dt>
+<dd>The DataFrame containing the bouts</dd>
+<dt><strong><code>window</code></strong> :&ensp;<code>list</code></dt>
+<dd>The number of seconds to add to the starting and end time of the bout.</dd>
+<dt><strong><code>range_column</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optional string indicating the column in original for the timestamp. This results in a prefix
+in the bouts DataFrame, timestamp column 't' leads to bout columns 't_min' and 't_max'.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>pandas.DataFrame</code></dt>
+<dd>A copy of the bouts DataFrame with padded min and max timestamp values</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def with_padded_bout_window(bouts, window=[0, 0], range_column=&#34;t&#34;):
+    &#34;&#34;&#34;
+    Pad the values in a Pandas DataFrame created with `extract_bouts` with a time window.
+
+    Parameters
+    ----------
+    bouts : pandas.Dataframe
+        The DataFrame containing the bouts
+    window : list
+        The number of seconds to add to the starting and end time of the bout.
+    range_column : str
+        Optional string indicating the column in original for the timestamp. This results in a prefix
+        in the bouts DataFrame, timestamp column &#39;t&#39; leads to bout columns &#39;t_min&#39; and &#39;t_max&#39;.
+
+    Returns
+    -------
+    pandas.DataFrame
+        A copy of the bouts DataFrame with padded min and max timestamp values
+    &#34;&#34;&#34;
+    bouts = bouts.copy()
+    bouts[range_column + &#34;_start&#34;] = bouts[range_column + &#34;_start&#34;] + pd.to_timedelta(
+        window[0], unit=&#34;s&#34;
+    )
+    bouts[range_column + &#34;_end&#34;] = bouts[range_column + &#34;_end&#34;] + pd.to_timedelta(
+        window[1], unit=&#34;s&#34;
+    )
+
+    return bouts</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="mergait" href="index.html">mergait</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="mergait.bouts.add_bouts_as_column" href="#mergait.bouts.add_bouts_as_column">add_bouts_as_column</a></code></li>
+<li><code><a title="mergait.bouts.extract_bouts" href="#mergait.bouts.extract_bouts">extract_bouts</a></code></li>
+<li><code><a title="mergait.bouts.interpolate_bouts_as_column" href="#mergait.bouts.interpolate_bouts_as_column">interpolate_bouts_as_column</a></code></li>
+<li><code><a title="mergait.bouts.select_range" href="#mergait.bouts.select_range">select_range</a></code></li>
+<li><code><a title="mergait.bouts.with_padded_bout_window" href="#mergait.bouts.with_padded_bout_window">with_padded_bout_window</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>mergait.music API documentation</title>
+<meta name="description" content="Music parameter related utility functions …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>mergait.music</code></h1>
+</header>
+<section id="section-intro">
+<p>Music parameter related utility functions</p>
+<p>These functions help merge music related data with other datasets</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34; Music parameter related utility functions
+
+These functions help merge music related data with other datasets
+&#34;&#34;&#34;
+
+import pandas as pd
+import numpy as np
+from mergait.bouts import *
+
+
+def merge_music_playstate(df, df_music, columns=[&#34;t&#34;, &#34;track_uri&#34;]):
+    &#34;&#34;&#34;
+    Merge music playstate information into another dataset.
+    1) Given columns are appended by a backward merge on time
+    2) The playstate position is interpolated when the music is playing
+    3) A filter column is added to indicate whether music is playing
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        The DataFrame containing the data is merged with music playstate data
+    df_music : pandas.Dataframe
+        The DataFrame containing music playstate
+    columns : list[str]
+        The columns of the music DataFrame that are merged backward into df
+
+    Returns
+    -------
+    pandas.DataFrame
+        A new DataFrame with the interpolated music playstate merged into it
+    &#34;&#34;&#34;
+
+    df = df.copy()
+
+    # tracks may occur multiple times in the dataset, so we group not per track but per track-boundary
+    df_music = pd.DataFrame(df_music)
+    df_music[&#34;__temp&#34;] = (df_music.track_uri != df_music.track_uri.shift()).cumsum()
+    df_music_songs = df_music.groupby(by=[&#34;__temp&#34;], sort=False)
+
+    # merge simple properties, making sure track_uri remains categorical
+    df = pd.merge_asof(
+        df, df_music[[&#34;t&#34;, &#34;track_uri&#34;]].dropna(), on=&#34;t&#34;, direction=&#34;backward&#34;
+    )
+
+    # for the playhead position we must interpolate the data, except for when the playstate is paused
+    keys = list(df_music_songs.groups.keys())
+    for idx in range(len(df_music_songs)):
+        is_last = idx + 1 == len(df_music_songs)
+
+        song = df_music_songs.get_group(keys[idx])
+        next_song = False if is_last else df_music_songs.get_group(keys[idx + 1])
+
+        song_valid = song[&#34;paused&#34;]
+        song_bouts = extract_bouts(song, song_valid, keep_invalid=True)
+
+        # pad last bout to the beginning of next song, so remember the last state until song finishes
+        if is_last:
+            song_bouts.tail(1).t_end = df.t.max()
+        else:
+            song_bouts.tail(1).t_end = next_song.t.iloc[0]
+
+        # add filter for when there is no music yet, or music is paused
+        add_bouts_as_column(df, song_bouts, new_column=&#34;bad_no_music&#34;, reset_value=True)
+        # interpolate and extrapolate play position
+        interpolate_bouts_as_column(
+            df, song, song_bouts, new_column=&#34;position&#34;, value_column=&#34;position&#34;
+        )
+
+    # remove playstate position when no music is playing
+    if not &#34;bad_no_music&#34; in df:
+        df[&#34;bad_no_music&#34;] = True
+    if not &#34;position&#34; in df:
+        df[&#34;position&#34;] = pd.Series()
+
+    df.loc[df[&#34;bad_no_music&#34;] == True, &#34;position&#34;] = np.nan
+
+    return df
+
+
+def append_music_section(
+    df, df_sections, timestamp_column=&#34;t&#34;, position_column=&#34;position&#34;
+):
+    &#34;&#34;&#34;
+    Appends the section index of the track to the data, using the playstate position and
+    the section boundaries.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        The DataFrame containing the data the music section must be appended to
+    df_sections : pandas.Dataframe
+        The DataFrame containing music section boundaries per track
+    timestamp_column : str
+        The column containing the timestamp (for sorting)
+    position_column : str
+        The column containing the playstate position (in ms)
+
+    Returns
+    -------
+    pandas.DataFrame
+        A new DataFrame with the appended music section index
+    &#34;&#34;&#34;
+    df = df.copy()
+
+    df = pd.merge_asof(
+        df.sort_values(by=&#34;position&#34;),
+        df_sections[[&#34;track_uri&#34;, &#34;start&#34;, &#34;section&#34;]].sort_values(by=&#34;start&#34;),
+        left_on=&#34;position&#34;,
+        right_on=&#34;start&#34;,
+        left_by=[&#34;track_uri&#34;],
+        right_by=&#34;track_uri&#34;,
+        direction=&#34;backward&#34;,
+    )
+    df.drop([&#34;start&#34;], axis=1, inplace=True)
+
+    return df.sort_values(by=timestamp_column).reset_index(drop=True)
+
+
+def get_music_features_per_section(
+    df_features, df_sections, df_segments, track_uris=None
+):
+    &#34;&#34;&#34;
+    Obtain the music features per section of a track.
+    As input, the pandas DataFrames resulting from the MusicLibrary class are required.
+
+    Parameters
+    ----------
+    df_features : pandas.Dataframe
+        Contains the basic track features
+    df_sections : pandas.Dataframe
+        Contains the section boundaries per track
+    df_segments : pandas.Dataframe
+        Contains sections with pitch and timbre information
+    track_uris : list
+        Optional list of tracks to get the data for, if None get all features
+
+    Returns
+    -------
+    pandas.DataFrame
+        For information about the columns, consult the Spotify API documentation
+    &#34;&#34;&#34;
+    if track_uris is None:
+        df = df_sections
+    else:
+        df = df_sections[df_sections[&#34;track_uri&#34;].isin(track_uris)]
+
+    df = df.merge(df_features, on=&#34;track_uri&#34;, suffixes=[None, &#34;_track&#34;])
+    df.drop([&#34;type&#34;, &#34;id&#34;, &#34;track_href&#34;, &#34;analysis_url&#34;], axis=1, inplace=True)
+    df.sort_values(by=&#34;start&#34;, inplace=True)
+
+    # add segment, pitch and timbre information
+    df_segs = df_segments[df_segments[&#34;track_uri&#34;].isin(df[&#34;track_uri&#34;])].sort_values(
+        by=&#34;start&#34;
+    )
+    df = pd.merge_asof(
+        df_segs[[&#34;track_uri&#34;, &#34;start&#34;, &#34;pitches&#34;, &#34;timbre&#34;]],
+        df,
+        on=&#34;start&#34;,
+        by=&#34;track_uri&#34;,
+        suffixes=[&#34;_segment&#34;, None],
+        direction=&#34;backward&#34;,
+    )
+
+    import ast
+
+    def mean(a):
+        c = np.array([ast.literal_eval(item) for item in a.values]).flatten()
+        return np.mean(c)
+
+    def std(a):
+        c = np.array([ast.literal_eval(item) for item in a.values]).flatten()
+        return np.std(c)
+
+    agg_funs = {key: &#34;first&#34; for key in df.columns}
+    agg_funs[&#34;pitches&#34;] = [mean, std]
+    agg_funs[&#34;timbre&#34;] = [mean, std]
+
+    df = df.groupby([&#34;track_uri&#34;, &#34;section&#34;]).agg(agg_funs)
+    df.columns = df.columns.map(lambda x: &#34;_&#34;.join(a for a in x if a != &#34;first&#34;))
+    df.reset_index(drop=True, inplace=True)
+
+    return df
+
+
+def get_music_features_per_track(df_features, df_segments, track_uris=None):
+    &#34;&#34;&#34;
+    Obtain the music features per track.
+    As input, the pandas DataFrames resulting from the MusicLibrary class are required.
+
+    Parameters
+    ----------
+    df_features : pandas.Dataframe
+        Contains the basic track features
+    df_segments : pandas.Dataframe
+        Contains sections with pitch and timbre information
+    track_uris : list
+        Optional list of tracks to get the data for, if None get all features
+
+    Returns
+    -------
+    pandas.DataFrame
+        For information about the columns, consult the Spotify API documentation
+    &#34;&#34;&#34;
+    if track_uris is None:
+        df = df_features
+    else:
+        df = df_features[df_features[&#34;track_uri&#34;].isin(track_uris)]
+
+    df.drop([&#34;id&#34;, &#34;track_href&#34;, &#34;analysis_url&#34;], axis=1, inplace=True)
+
+    # add segment, pitch and timbre information
+    df_segs = df_segments[df_segments[&#34;track_uri&#34;].isin(df[&#34;track_uri&#34;])]
+    df = df_segs[[&#34;track_uri&#34;, &#34;pitches&#34;, &#34;timbre&#34;]].merge(
+        df, on=&#34;track_uri&#34;, suffixes=[&#34;_segment&#34;, None]
+    )
+
+    import ast
+
+    def mean(a):
+        c = np.array([ast.literal_eval(item) for item in a.values]).flatten()
+        return np.mean(c)
+
+    def std(a):
+        c = np.array([ast.literal_eval(item) for item in a.values]).flatten()
+        return np.std(c)
+
+    agg_funs = {key: &#34;first&#34; for key in df.columns}
+    agg_funs[&#34;pitches&#34;] = [mean, std]
+    agg_funs[&#34;timbre&#34;] = [mean, std]
+
+    df = df.groupby([&#34;track_uri&#34;]).agg(agg_funs)
+    df.columns = df.columns.map(lambda x: &#34;_&#34;.join(a for a in x if a != &#34;first&#34;))
+    df.reset_index(drop=True, inplace=True)
+
+    return df
+
+
+def get_music_track_info(df_tracks, df_artists, track_uris):
+    &#34;&#34;&#34;
+    Get human readable general track info used for debugging and displaying purposes.
+    As input, the pandas DataFrames resulting from the MusicLibrary class are required.
+
+    Parameters
+    ----------
+    df_tracks : pandas.Dataframe
+        Contains general track information
+    df_artists : pandas.Dataframe
+        Contains artist information
+    track_uris : list
+        Optional list of tracks to get the data for, if None get all features
+
+    Returns
+    -------
+    pandas.DataFrame
+        For information about the columns, consult the Spotify API documentation
+    &#34;&#34;&#34;
+    import ast
+
+    if track_uris is None:
+        df = df_tracks
+    else:
+        df = df_tracks[df_tracks[&#34;track_uri&#34;].isin(track_uris)]
+
+        df[&#34;artist_uri&#34;] = df[&#34;artists&#34;].transform(
+            lambda x: ast.literal_eval(x)[0][&#34;uri&#34;]
+        )
+        df[&#34;artists&#34;] = df[&#34;artists&#34;].transform(
+            lambda x: ast.literal_eval(x)[0][&#34;name&#34;]
+        )
+        df[&#34;album_images&#34;] = df[&#34;album_images&#34;].transform(
+            lambda x: ast.literal_eval(x)[0][&#34;url&#34;]
+        )
+
+        df = df[
+            [
+                &#34;artists&#34;,
+                &#34;artist_uri&#34;,
+                &#34;name&#34;,
+                &#34;popularity&#34;,
+                &#34;album_name&#34;,
+                &#34;album_uri&#34;,
+                &#34;album_images&#34;,
+            ]
+        ]
+        df.rename(
+            columns={&#34;artists&#34;: &#34;artist_name&#34;, &#34;album_images&#34;: &#34;cover_url&#34;},
+            inplace=True,
+        )
+
+        df = df.merge(
+            df_artists[[&#34;artist_uri&#34;, &#34;popularity&#34;, &#34;genres&#34;, &#34;followers_total&#34;]],
+            left_on=&#34;artist_uri&#34;,
+            right_on=&#34;artist_uri&#34;,
+            suffixes=[None, &#34;_artist&#34;],
+            how=&#34;left&#34;,
+        )
+        df.drop_duplicates(inplace=True)
+        df.reset_index(drop=True, inplace=True)
+    return df</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="mergait.music.append_music_section"><code class="name flex">
+<span>def <span class="ident">append_music_section</span></span>(<span>df, df_sections, timestamp_column='t', position_column='position')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Appends the section index of the track to the data, using the playstate position and
+the section boundaries.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>df</code></strong> :&ensp;<code>pandas.DataFrame</code></dt>
+<dd>The DataFrame containing the data the music section must be appended to</dd>
+<dt><strong><code>df_sections</code></strong> :&ensp;<code>pandas.Dataframe</code></dt>
+<dd>The DataFrame containing music section boundaries per track</dd>
+<dt><strong><code>timestamp_column</code></strong> :&ensp;<code>str</code></dt>
+<dd>The column containing the timestamp (for sorting)</dd>
+<dt><strong><code>position_column</code></strong> :&ensp;<code>str</code></dt>
+<dd>The column containing the playstate position (in ms)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>pandas.DataFrame</code></dt>
+<dd>A new DataFrame with the appended music section index</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def append_music_section(
+    df, df_sections, timestamp_column=&#34;t&#34;, position_column=&#34;position&#34;
+):
+    &#34;&#34;&#34;
+    Appends the section index of the track to the data, using the playstate position and
+    the section boundaries.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        The DataFrame containing the data the music section must be appended to
+    df_sections : pandas.Dataframe
+        The DataFrame containing music section boundaries per track
+    timestamp_column : str
+        The column containing the timestamp (for sorting)
+    position_column : str
+        The column containing the playstate position (in ms)
+
+    Returns
+    -------
+    pandas.DataFrame
+        A new DataFrame with the appended music section index
+    &#34;&#34;&#34;
+    df = df.copy()
+
+    df = pd.merge_asof(
+        df.sort_values(by=&#34;position&#34;),
+        df_sections[[&#34;track_uri&#34;, &#34;start&#34;, &#34;section&#34;]].sort_values(by=&#34;start&#34;),
+        left_on=&#34;position&#34;,
+        right_on=&#34;start&#34;,
+        left_by=[&#34;track_uri&#34;],
+        right_by=&#34;track_uri&#34;,
+        direction=&#34;backward&#34;,
+    )
+    df.drop([&#34;start&#34;], axis=1, inplace=True)
+
+    return df.sort_values(by=timestamp_column).reset_index(drop=True)</code></pre>
+</details>
+</dd>
+<dt id="mergait.music.get_music_features_per_section"><code class="name flex">
+<span>def <span class="ident">get_music_features_per_section</span></span>(<span>df_features, df_sections, df_segments, track_uris=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Obtain the music features per section of a track.
+As input, the pandas DataFrames resulting from the MusicLibrary class are required.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>df_features</code></strong> :&ensp;<code>pandas.Dataframe</code></dt>
+<dd>Contains the basic track features</dd>
+<dt><strong><code>df_sections</code></strong> :&ensp;<code>pandas.Dataframe</code></dt>
+<dd>Contains the section boundaries per track</dd>
+<dt><strong><code>df_segments</code></strong> :&ensp;<code>pandas.Dataframe</code></dt>
+<dd>Contains sections with pitch and timbre information</dd>
+<dt><strong><code>track_uris</code></strong> :&ensp;<code>list</code></dt>
+<dd>Optional list of tracks to get the data for, if None get all features</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>pandas.DataFrame</code></dt>
+<dd>For information about the columns, consult the Spotify API documentation</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_music_features_per_section(
+    df_features, df_sections, df_segments, track_uris=None
+):
+    &#34;&#34;&#34;
+    Obtain the music features per section of a track.
+    As input, the pandas DataFrames resulting from the MusicLibrary class are required.
+
+    Parameters
+    ----------
+    df_features : pandas.Dataframe
+        Contains the basic track features
+    df_sections : pandas.Dataframe
+        Contains the section boundaries per track
+    df_segments : pandas.Dataframe
+        Contains sections with pitch and timbre information
+    track_uris : list
+        Optional list of tracks to get the data for, if None get all features
+
+    Returns
+    -------
+    pandas.DataFrame
+        For information about the columns, consult the Spotify API documentation
+    &#34;&#34;&#34;
+    if track_uris is None:
+        df = df_sections
+    else:
+        df = df_sections[df_sections[&#34;track_uri&#34;].isin(track_uris)]
+
+    df = df.merge(df_features, on=&#34;track_uri&#34;, suffixes=[None, &#34;_track&#34;])
+    df.drop([&#34;type&#34;, &#34;id&#34;, &#34;track_href&#34;, &#34;analysis_url&#34;], axis=1, inplace=True)
+    df.sort_values(by=&#34;start&#34;, inplace=True)
+
+    # add segment, pitch and timbre information
+    df_segs = df_segments[df_segments[&#34;track_uri&#34;].isin(df[&#34;track_uri&#34;])].sort_values(
+        by=&#34;start&#34;
+    )
+    df = pd.merge_asof(
+        df_segs[[&#34;track_uri&#34;, &#34;start&#34;, &#34;pitches&#34;, &#34;timbre&#34;]],
+        df,
+        on=&#34;start&#34;,
+        by=&#34;track_uri&#34;,
+        suffixes=[&#34;_segment&#34;, None],
+        direction=&#34;backward&#34;,
+    )
+
+    import ast
+
+    def mean(a):
+        c = np.array([ast.literal_eval(item) for item in a.values]).flatten()
+        return np.mean(c)
+
+    def std(a):
+        c = np.array([ast.literal_eval(item) for item in a.values]).flatten()
+        return np.std(c)
+
+    agg_funs = {key: &#34;first&#34; for key in df.columns}
+    agg_funs[&#34;pitches&#34;] = [mean, std]
+    agg_funs[&#34;timbre&#34;] = [mean, std]
+
+    df = df.groupby([&#34;track_uri&#34;, &#34;section&#34;]).agg(agg_funs)
+    df.columns = df.columns.map(lambda x: &#34;_&#34;.join(a for a in x if a != &#34;first&#34;))
+    df.reset_index(drop=True, inplace=True)
+
+    return df</code></pre>
+</details>
+</dd>
+<dt id="mergait.music.get_music_features_per_track"><code class="name flex">
+<span>def <span class="ident">get_music_features_per_track</span></span>(<span>df_features, df_segments, track_uris=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Obtain the music features per track.
+As input, the pandas DataFrames resulting from the MusicLibrary class are required.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>df_features</code></strong> :&ensp;<code>pandas.Dataframe</code></dt>
+<dd>Contains the basic track features</dd>
+<dt><strong><code>df_segments</code></strong> :&ensp;<code>pandas.Dataframe</code></dt>
+<dd>Contains sections with pitch and timbre information</dd>
+<dt><strong><code>track_uris</code></strong> :&ensp;<code>list</code></dt>
+<dd>Optional list of tracks to get the data for, if None get all features</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>pandas.DataFrame</code></dt>
+<dd>For information about the columns, consult the Spotify API documentation</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_music_features_per_track(df_features, df_segments, track_uris=None):
+    &#34;&#34;&#34;
+    Obtain the music features per track.
+    As input, the pandas DataFrames resulting from the MusicLibrary class are required.
+
+    Parameters
+    ----------
+    df_features : pandas.Dataframe
+        Contains the basic track features
+    df_segments : pandas.Dataframe
+        Contains sections with pitch and timbre information
+    track_uris : list
+        Optional list of tracks to get the data for, if None get all features
+
+    Returns
+    -------
+    pandas.DataFrame
+        For information about the columns, consult the Spotify API documentation
+    &#34;&#34;&#34;
+    if track_uris is None:
+        df = df_features
+    else:
+        df = df_features[df_features[&#34;track_uri&#34;].isin(track_uris)]
+
+    df.drop([&#34;id&#34;, &#34;track_href&#34;, &#34;analysis_url&#34;], axis=1, inplace=True)
+
+    # add segment, pitch and timbre information
+    df_segs = df_segments[df_segments[&#34;track_uri&#34;].isin(df[&#34;track_uri&#34;])]
+    df = df_segs[[&#34;track_uri&#34;, &#34;pitches&#34;, &#34;timbre&#34;]].merge(
+        df, on=&#34;track_uri&#34;, suffixes=[&#34;_segment&#34;, None]
+    )
+
+    import ast
+
+    def mean(a):
+        c = np.array([ast.literal_eval(item) for item in a.values]).flatten()
+        return np.mean(c)
+
+    def std(a):
+        c = np.array([ast.literal_eval(item) for item in a.values]).flatten()
+        return np.std(c)
+
+    agg_funs = {key: &#34;first&#34; for key in df.columns}
+    agg_funs[&#34;pitches&#34;] = [mean, std]
+    agg_funs[&#34;timbre&#34;] = [mean, std]
+
+    df = df.groupby([&#34;track_uri&#34;]).agg(agg_funs)
+    df.columns = df.columns.map(lambda x: &#34;_&#34;.join(a for a in x if a != &#34;first&#34;))
+    df.reset_index(drop=True, inplace=True)
+
+    return df</code></pre>
+</details>
+</dd>
+<dt id="mergait.music.get_music_track_info"><code class="name flex">
+<span>def <span class="ident">get_music_track_info</span></span>(<span>df_tracks, df_artists, track_uris)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get human readable general track info used for debugging and displaying purposes.
+As input, the pandas DataFrames resulting from the MusicLibrary class are required.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>df_tracks</code></strong> :&ensp;<code>pandas.Dataframe</code></dt>
+<dd>Contains general track information</dd>
+<dt><strong><code>df_artists</code></strong> :&ensp;<code>pandas.Dataframe</code></dt>
+<dd>Contains artist information</dd>
+<dt><strong><code>track_uris</code></strong> :&ensp;<code>list</code></dt>
+<dd>Optional list of tracks to get the data for, if None get all features</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>pandas.DataFrame</code></dt>
+<dd>For information about the columns, consult the Spotify API documentation</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_music_track_info(df_tracks, df_artists, track_uris):
+    &#34;&#34;&#34;
+    Get human readable general track info used for debugging and displaying purposes.
+    As input, the pandas DataFrames resulting from the MusicLibrary class are required.
+
+    Parameters
+    ----------
+    df_tracks : pandas.Dataframe
+        Contains general track information
+    df_artists : pandas.Dataframe
+        Contains artist information
+    track_uris : list
+        Optional list of tracks to get the data for, if None get all features
+
+    Returns
+    -------
+    pandas.DataFrame
+        For information about the columns, consult the Spotify API documentation
+    &#34;&#34;&#34;
+    import ast
+
+    if track_uris is None:
+        df = df_tracks
+    else:
+        df = df_tracks[df_tracks[&#34;track_uri&#34;].isin(track_uris)]
+
+        df[&#34;artist_uri&#34;] = df[&#34;artists&#34;].transform(
+            lambda x: ast.literal_eval(x)[0][&#34;uri&#34;]
+        )
+        df[&#34;artists&#34;] = df[&#34;artists&#34;].transform(
+            lambda x: ast.literal_eval(x)[0][&#34;name&#34;]
+        )
+        df[&#34;album_images&#34;] = df[&#34;album_images&#34;].transform(
+            lambda x: ast.literal_eval(x)[0][&#34;url&#34;]
+        )
+
+        df = df[
+            [
+                &#34;artists&#34;,
+                &#34;artist_uri&#34;,
+                &#34;name&#34;,
+                &#34;popularity&#34;,
+                &#34;album_name&#34;,
+                &#34;album_uri&#34;,
+                &#34;album_images&#34;,
+            ]
+        ]
+        df.rename(
+            columns={&#34;artists&#34;: &#34;artist_name&#34;, &#34;album_images&#34;: &#34;cover_url&#34;},
+            inplace=True,
+        )
+
+        df = df.merge(
+            df_artists[[&#34;artist_uri&#34;, &#34;popularity&#34;, &#34;genres&#34;, &#34;followers_total&#34;]],
+            left_on=&#34;artist_uri&#34;,
+            right_on=&#34;artist_uri&#34;,
+            suffixes=[None, &#34;_artist&#34;],
+            how=&#34;left&#34;,
+        )
+        df.drop_duplicates(inplace=True)
+        df.reset_index(drop=True, inplace=True)
+    return df</code></pre>
+</details>
+</dd>
+<dt id="mergait.music.merge_music_playstate"><code class="name flex">
+<span>def <span class="ident">merge_music_playstate</span></span>(<span>df, df_music, columns=['t', 'track_uri'])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Merge music playstate information into another dataset.
+1) Given columns are appended by a backward merge on time
+2) The playstate position is interpolated when the music is playing
+3) A filter column is added to indicate whether music is playing</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>df</code></strong> :&ensp;<code>pandas.DataFrame</code></dt>
+<dd>The DataFrame containing the data is merged with music playstate data</dd>
+<dt><strong><code>df_music</code></strong> :&ensp;<code>pandas.Dataframe</code></dt>
+<dd>The DataFrame containing music playstate</dd>
+<dt><strong><code>columns</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>The columns of the music DataFrame that are merged backward into df</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>pandas.DataFrame</code></dt>
+<dd>A new DataFrame with the interpolated music playstate merged into it</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def merge_music_playstate(df, df_music, columns=[&#34;t&#34;, &#34;track_uri&#34;]):
+    &#34;&#34;&#34;
+    Merge music playstate information into another dataset.
+    1) Given columns are appended by a backward merge on time
+    2) The playstate position is interpolated when the music is playing
+    3) A filter column is added to indicate whether music is playing
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        The DataFrame containing the data is merged with music playstate data
+    df_music : pandas.Dataframe
+        The DataFrame containing music playstate
+    columns : list[str]
+        The columns of the music DataFrame that are merged backward into df
+
+    Returns
+    -------
+    pandas.DataFrame
+        A new DataFrame with the interpolated music playstate merged into it
+    &#34;&#34;&#34;
+
+    df = df.copy()
+
+    # tracks may occur multiple times in the dataset, so we group not per track but per track-boundary
+    df_music = pd.DataFrame(df_music)
+    df_music[&#34;__temp&#34;] = (df_music.track_uri != df_music.track_uri.shift()).cumsum()
+    df_music_songs = df_music.groupby(by=[&#34;__temp&#34;], sort=False)
+
+    # merge simple properties, making sure track_uri remains categorical
+    df = pd.merge_asof(
+        df, df_music[[&#34;t&#34;, &#34;track_uri&#34;]].dropna(), on=&#34;t&#34;, direction=&#34;backward&#34;
+    )
+
+    # for the playhead position we must interpolate the data, except for when the playstate is paused
+    keys = list(df_music_songs.groups.keys())
+    for idx in range(len(df_music_songs)):
+        is_last = idx + 1 == len(df_music_songs)
+
+        song = df_music_songs.get_group(keys[idx])
+        next_song = False if is_last else df_music_songs.get_group(keys[idx + 1])
+
+        song_valid = song[&#34;paused&#34;]
+        song_bouts = extract_bouts(song, song_valid, keep_invalid=True)
+
+        # pad last bout to the beginning of next song, so remember the last state until song finishes
+        if is_last:
+            song_bouts.tail(1).t_end = df.t.max()
+        else:
+            song_bouts.tail(1).t_end = next_song.t.iloc[0]
+
+        # add filter for when there is no music yet, or music is paused
+        add_bouts_as_column(df, song_bouts, new_column=&#34;bad_no_music&#34;, reset_value=True)
+        # interpolate and extrapolate play position
+        interpolate_bouts_as_column(
+            df, song, song_bouts, new_column=&#34;position&#34;, value_column=&#34;position&#34;
+        )
+
+    # remove playstate position when no music is playing
+    if not &#34;bad_no_music&#34; in df:
+        df[&#34;bad_no_music&#34;] = True
+    if not &#34;position&#34; in df:
+        df[&#34;position&#34;] = pd.Series()
+
+    df.loc[df[&#34;bad_no_music&#34;] == True, &#34;position&#34;] = np.nan
+
+    return df</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="mergait" href="index.html">mergait</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="mergait.music.append_music_section" href="#mergait.music.append_music_section">append_music_section</a></code></li>
+<li><code><a title="mergait.music.get_music_features_per_section" href="#mergait.music.get_music_features_per_section">get_music_features_per_section</a></code></li>
+<li><code><a title="mergait.music.get_music_features_per_track" href="#mergait.music.get_music_features_per_track">get_music_features_per_track</a></code></li>
+<li><code><a title="mergait.music.get_music_track_info" href="#mergait.music.get_music_track_info">get_music_track_info</a></code></li>
+<li><code><a title="mergait.music.merge_music_playstate" href="#mergait.music.merge_music_playstate">merge_music_playstate</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

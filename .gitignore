@@ -152,6 +152,7 @@ Thumbs.db #thumbnail cache on Windows
 # sample data
 data/*
 !data/README.md
+!data/codebook.md
 
 # general OS files
 .DS_Store

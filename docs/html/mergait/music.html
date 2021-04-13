@@ -207,6 +207,15 @@ def get_music_features_per_section(
 
     df = df.groupby([&#34;track_uri&#34;, &#34;section&#34;]).agg(agg_funs)
     df.columns = df.columns.map(lambda x: &#34;_&#34;.join(a for a in x if a != &#34;first&#34;))
+
+    df.rename(
+        columns={
+            &#34;confidence&#34;: &#34;duration_confidence&#34;,
+            &#34;duration_mw&#34;: &#34;duration_track_ms&#34;,
+        },
+        inplace=True,
+    )
+
     df.reset_index(drop=True, inplace=True)
 
     return df
@@ -236,7 +245,7 @@ def get_music_features_per_track(df_features, df_segments, track_uris=None):
     else:
         df = df_features[df_features[&#34;track_uri&#34;].isin(track_uris)]
 
-    df.drop([&#34;id&#34;, &#34;track_href&#34;, &#34;analysis_url&#34;], axis=1, inplace=True)
+    df.drop([&#34;type&#34;, &#34;id&#34;, &#34;track_href&#34;, &#34;analysis_url&#34;], axis=1, inplace=True)
 
     # add segment, pitch and timbre information
     df_segs = df_segments[df_segments[&#34;track_uri&#34;].isin(df[&#34;track_uri&#34;])]
@@ -488,6 +497,15 @@ As input, the pandas DataFrames resulting from the MusicLibrary class are requir
 
     df = df.groupby([&#34;track_uri&#34;, &#34;section&#34;]).agg(agg_funs)
     df.columns = df.columns.map(lambda x: &#34;_&#34;.join(a for a in x if a != &#34;first&#34;))
+
+    df.rename(
+        columns={
+            &#34;confidence&#34;: &#34;duration_confidence&#34;,
+            &#34;duration_mw&#34;: &#34;duration_track_ms&#34;,
+        },
+        inplace=True,
+    )
+
     df.reset_index(drop=True, inplace=True)
 
     return df</code></pre>
@@ -541,7 +559,7 @@ As input, the pandas DataFrames resulting from the MusicLibrary class are requir
     else:
         df = df_features[df_features[&#34;track_uri&#34;].isin(track_uris)]
 
-    df.drop([&#34;id&#34;, &#34;track_href&#34;, &#34;analysis_url&#34;], axis=1, inplace=True)
+    df.drop([&#34;type&#34;, &#34;id&#34;, &#34;track_href&#34;, &#34;analysis_url&#34;], axis=1, inplace=True)
 
     # add segment, pitch and timbre information
     df_segs = df_segments[df_segments[&#34;track_uri&#34;].isin(df[&#34;track_uri&#34;])]

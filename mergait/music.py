@@ -177,6 +177,15 @@ def get_music_features_per_section(
 
     df = df.groupby(["track_uri", "section"]).agg(agg_funs)
     df.columns = df.columns.map(lambda x: "_".join(a for a in x if a != "first"))
+
+    df.rename(
+        columns={
+            "confidence": "duration_confidence",
+            "duration_mw": "duration_track_ms",
+        },
+        inplace=True,
+    )
+
     df.reset_index(drop=True, inplace=True)
 
     return df
@@ -206,7 +215,7 @@ def get_music_features_per_track(df_features, df_segments, track_uris=None):
     else:
         df = df_features[df_features["track_uri"].isin(track_uris)]
 
-    df.drop(["id", "track_href", "analysis_url"], axis=1, inplace=True)
+    df.drop(["type", "id", "track_href", "analysis_url"], axis=1, inplace=True)
 
     # add segment, pitch and timbre information
     df_segs = df_segments[df_segments["track_uri"].isin(df["track_uri"])]

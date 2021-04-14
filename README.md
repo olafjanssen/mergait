@@ -26,7 +26,7 @@ pip install mergait
 ## Basic usage
 We refer to the example notebooks for how to apply the standard recipes for loading and analyzing the gait and music data.
 
-In addition, you can find the reference documentation [here](./docs/md/mergait) or online at [mergait.github.io](https://mergait.github.io).
+In addition, you can find the reference documentation [here](./docs/md/mergait) or online at [mergait.github.io](https://olafjanssen.github.io/mergait).
 
 Read [here](./data/README.md) how to obtain a sample data set and read the [codebook](./data/codebook.md) of the sample data.
 

@@ -26,7 +26,7 @@ pip install mergait
 ## Basic usage
 We refer to the example notebooks for how to apply the standard recipes for loading and analyzing the gait and music data.
 
-In addition, you can find the reference documentation [here](./docs/md/mergait/index.md) or online at [mergait.github.io](https://mergait.github.io).
+In addition, you can find the reference documentation [here](./docs/md/mergait) or online at [mergait.github.io](https://mergait.github.io).
 
 Read [here](./data/README.md) how to obtain a sample data set and read the [codebook](./data/codebook.md) of the sample data.
 
@@ -37,8 +37,10 @@ Please contact us if you want to contribute to this project or you are intereste
 This package was developed as part of the Music Enabled Running research project conducted at the [centre of expertise Interaction Design (IXD)](https://www.ixdfontysict.nl/), which is a research chair at Fontys School of Information and Communication Technology (FHICT), department of [Fontys](https://fontys.nl/) University of Applied Sciences, Eindhoven, The Netherlands.
 
 This research project was additionally funded by:
+
 * Vitality Living Lab
 * Nano4Sports
+
 Both initiatives of the [Cluster Sports & Technology](https://sportsandtechnology.com/)
 
 ## Author

@@ -156,3 +156,6 @@ data/*
 
 # general OS files
 .DS_Store
+scripts
+
+

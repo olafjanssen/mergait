@@ -145,6 +145,9 @@ class MusicLibrary:
             A list of track uris of the Spotify API
         """
 
+        # filter invalid ids
+        track_uris = [i for i in track_uris if i and i != ""]
+
         if len(track_uris) == 0:
             return
 
@@ -156,13 +159,13 @@ class MusicLibrary:
         # get audio features
         features_dict = self.spotipy.audio_features(track_uris)
 
+        # remove None values from features lists
+        track_dict["tracks"] = [i for i in track_dict["tracks"] if i]
+        features_dict = [i for i in features_dict if i]
+
         df_tracks = pd.json_normalize(track_dict["tracks"], sep="_")
         df_tracks.rename({"uri": "track_uri"}, axis=1, inplace=True)
         self.df_tracks = self.df_tracks.append(df_tracks)
-
-        # skip if there are no features for the track (e.g. ads)
-        if features_dict is None or len(features_dict) == 0:
-            return
 
         df_features = pd.DataFrame(features_dict)
         df_features.rename({"uri": "track_uri"}, axis=1, inplace=True)

@@ -160,6 +160,10 @@ class MusicLibrary:
         df_tracks.rename({"uri": "track_uri"}, axis=1, inplace=True)
         self.df_tracks = self.df_tracks.append(df_tracks)
 
+        # skip if there are no features for the track (e.g. ads)
+        if features_dict is None or len(features_dict) == 0:
+            return
+
         df_features = pd.DataFrame(features_dict)
         df_features.rename({"uri": "track_uri"}, axis=1, inplace=True)
         self.df_features = self.df_features.append(df_features)

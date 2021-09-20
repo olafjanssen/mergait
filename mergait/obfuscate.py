@@ -50,10 +50,12 @@ def obfuscate_sessions(df_sessions, level=Obfuscate.FULL):
 
     df_sessions = df_sessions.copy()
 
+    # make sure label encoders exist as return values even if they are not used
+    session_le = preprocessing.LabelEncoder()
+    user_le = preprocessing.LabelEncoder()
+
     if level >= Obfuscate.MIN:
         # convert internal session_id and user_id to a label
-        session_le = preprocessing.LabelEncoder()
-        user_le = preprocessing.LabelEncoder()
 
         df_sessions["session_id"] = session_le.fit_transform(df_sessions["session_id"])
         df_sessions["session_id"] = df_sessions["session_id"].transform(
@@ -143,12 +145,15 @@ def obfuscate_music(df_music, df_music_features, level=Obfuscate.FULL):
     df_music = df_music.copy()
     df_music_features = [dfm.copy() for dfm in df_music_features]
 
+    df_obfuscated_features = df_music_features
+
+    # make sure label encoders exist as return values even if they are not used
+    track_le = preprocessing.LabelEncoder()
+    context_le = preprocessing.LabelEncoder()
+
     # remove Spotify metadata
     if level >= Obfuscate.BASIC:
         # convert uris to a label
-        track_le = preprocessing.LabelEncoder()
-        context_le = preprocessing.LabelEncoder()
-
         tracks = df_music["track_uri"].values
         df_music["track_uri"] = track_le.fit_transform(df_music["track_uri"])
         df_music["track_uri"] = df_music["track_uri"].transform(lambda x: "t" + str(x))

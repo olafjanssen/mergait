@@ -119,19 +119,29 @@ class MusicLibrary:
 
         Parameters
         ----------
-        track_uris : list[str]
-            A list of track uris of the Spotify API
+        track_uris : Pandas.Series [str]
+            A series with track uris of the Spotify API
 
         """
+
+        # clean input list to contain valid, unique entries
+        track_uris = track_uris.dropna().unique()
 
         # find songs that are not in the feature database
         known_uris = (
             [] if len(self.df_tracks) == 0 else set(self.df_tracks["track_uri"].values)
         )
         required_uris = set(track_uris)
-        unknown_uris = required_uris.difference(known_uris)
+        unknown_uris = list(required_uris.difference(known_uris))
 
-        self.__spotify_tracks(unknown_uris)
+        api_call_length = 50
+        chunks = [
+            unknown_uris[x : x + api_call_length]
+            for x in range(0, len(unknown_uris), api_call_length)
+        ]
+        for chunk in chunks:
+            log.debug("Requesting tracks for chunk with size: %d", len(chunk))
+            self.__spotify_tracks(chunk)
 
     def __spotify_tracks(self, track_uris):
         """

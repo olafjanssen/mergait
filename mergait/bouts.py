@@ -217,13 +217,17 @@ def interpolate_bouts_as_column(
             df_values[value_column],
         )
 
-        from scipy import interpolate
+        if len(t_bout) > 1:
+            from scipy import interpolate
 
-        f = interpolate.interp1d(t_bout, val_bout, fill_value="extrapolate")
-
-        val_data = [f(t) for t in t_data]
-
-        df[new_column].iloc[bout_data.index] = val_data
+            f = interpolate.interp1d(t_bout, val_bout, fill_value="extrapolate")
+            val_data = [f(t) for t in t_data]
+            df[new_column].iloc[bout_data.index] = val_data
+        else:
+            val_data = [
+                val_bout[0] + (t - t_bout) / 1e9 for t in t_data
+            ]  # manual extrapolation from a single point assuming ns precision in timestamps
+            df[new_column].iloc[bout_data.index] = val_data
 
     # changes the df inplace but return dataframe for chaining purposes
     return df

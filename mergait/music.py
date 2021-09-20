@@ -226,11 +226,11 @@ def get_music_features_per_track(df_features, df_segments, track_uris=None):
     import ast
 
     def mean(a):
-        c = np.array([ast.literal_eval(item) for item in a.values]).flatten()
+        c = np.array([ast.literal_eval(str(item)) for item in a.values]).flatten()
         return np.mean(c)
 
     def std(a):
-        c = np.array([ast.literal_eval(item) for item in a.values]).flatten()
+        c = np.array([ast.literal_eval(str(item)) for item in a.values]).flatten()
         return np.std(c)
 
     agg_funs = {key: "first" for key in df.columns}

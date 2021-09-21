@@ -1,5 +1,9 @@
 # Changelog
 
+### 2021-09-20 v0.0.6
+
+- Add session wide filters and add code to example notebook
+
 ### 2021-09-20 v0.0.5
 
 - Fix API max request problem when requesting Spotify information

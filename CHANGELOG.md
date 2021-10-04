@@ -1,5 +1,9 @@
 # Changelog
 
+### 2021-10-04 v0.0.7
+
+- Instead of meaningless mean of timbre and pitch values per section, now all 12 vector values of timbre and pitch are kept
+
 ### 2021-09-20 v0.0.6
 
 - Add session wide filters and add code to example notebook

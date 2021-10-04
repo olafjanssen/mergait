@@ -140,7 +140,7 @@ class MusicLibrary:
             for x in range(0, len(unknown_uris), api_call_length)
         ]
         for chunk in chunks:
-            log.debug("Requesting tracks for chunk with size: %d", len(chunk))
+            log.info("Requesting tracks for chunk with size: %d", len(chunk))
             self.__spotify_tracks(chunk)
 
     def __spotify_tracks(self, track_uris):
@@ -194,6 +194,20 @@ class MusicLibrary:
             self.df_sections = self.df_sections.append(df_sections)
 
             df_segments = pd.DataFrame(df_analysis.segments[0])
+
+            # expand timbres and pitches to 12 columns
+            timbres = pd.DataFrame(df_segments.timbre.to_list())
+            timbres.columns = [
+                "timbre_" + str(a + 1) for a in range(len(timbres.columns))
+            ]
+
+            pitches = pd.DataFrame(df_segments.pitches.to_list())
+            pitches.columns = [
+                "pitch_" + str(a + 1) for a in range(len(pitches.columns))
+            ]
+
+            df_segments = pd.concat([df_segments, timbres, pitches], axis=1)
+            df_segments.drop(columns=["timbre", "pitches"], inplace=True)
             df_segments["track_uri"] = track_info["uri"]
             df_segments.reset_index(inplace=True)
             df_segments.rename(columns={"index": "segment"}, inplace=True)

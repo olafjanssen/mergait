@@ -153,7 +153,11 @@ def get_music_features_per_section(
         by="start"
     )
     df = pd.merge_asof(
-        df_segs[["track_uri", "start", "pitches", "timbre"]],
+        df_segs[
+            ["track_uri", "start"]
+            + ["timbre_" + str(a + 1) for a in range(12)]
+            + ["pitch_" + str(a + 1) for a in range(12)]
+        ],
         df,
         on="start",
         by="track_uri",
@@ -161,19 +165,10 @@ def get_music_features_per_section(
         direction="backward",
     )
 
-    import ast
-
-    def mean(a):
-        c = np.array([ast.literal_eval(item) for item in a.values]).flatten()
-        return np.mean(c)
-
-    def std(a):
-        c = np.array([ast.literal_eval(item) for item in a.values]).flatten()
-        return np.std(c)
-
     agg_funs = {key: "first" for key in df.columns}
-    agg_funs["pitches"] = [mean, std]
-    agg_funs["timbre"] = [mean, std]
+    for a in range(12):
+        agg_funs["pitch_" + str(a + 1)] = [np.mean, np.std]
+        agg_funs["timbre_" + str(a + 1)] = [np.mean, np.std]
 
     df = df.groupby(["track_uri", "section"]).agg(agg_funs)
     df.columns = df.columns.map(lambda x: "_".join(a for a in x if a != "first"))
@@ -219,23 +214,16 @@ def get_music_features_per_track(df_features, df_segments, track_uris=None):
 
     # add segment, pitch and timbre information
     df_segs = df_segments[df_segments["track_uri"].isin(df["track_uri"])]
-    df = df_segs[["track_uri", "pitches", "timbre"]].merge(
-        df, on="track_uri", suffixes=["_segment", None]
-    )
-
-    import ast
-
-    def mean(a):
-        c = np.array([ast.literal_eval(str(item)) for item in a.values]).flatten()
-        return np.mean(c)
-
-    def std(a):
-        c = np.array([ast.literal_eval(str(item)) for item in a.values]).flatten()
-        return np.std(c)
+    df = df_segs[
+        ["track_uri"]
+        + ["timbre_" + str(a + 1) for a in range(12)]
+        + ["pitch_" + str(a + 1) for a in range(12)]
+    ].merge(df, on="track_uri", suffixes=["_segment", None])
 
     agg_funs = {key: "first" for key in df.columns}
-    agg_funs["pitches"] = [mean, std]
-    agg_funs["timbre"] = [mean, std]
+    for a in range(12):
+        agg_funs["pitch_" + str(a + 1)] = [np.mean, np.std]
+        agg_funs["timbre_" + str(a + 1)] = [np.mean, np.std]
 
     df = df.groupby(["track_uri"]).agg(agg_funs)
     df.columns = df.columns.map(lambda x: "_".join(a for a in x if a != "first"))

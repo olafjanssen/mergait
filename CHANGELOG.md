@@ -1,5 +1,9 @@
 # Changelog
 
+### 2022-02-08 v0.0.8
+
+- Set lower default Spotify API call batch size for tracks, and allow user to set its own maximum batch size
+
 ### 2021-10-04 v0.0.7
 
 - Instead of meaningless mean of timbre and pitch values per section, now all 12 vector values of timbre and pitch are kept

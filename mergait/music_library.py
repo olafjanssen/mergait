@@ -106,7 +106,7 @@ class MusicLibrary:
             self.df_artists,
         )
 
-    def require_tracks(self, track_uris):
+    def require_tracks(self, track_uris, api_call_length = 20):
         """
         Ensure that the data of the given tracks are stored in the local music library, so
         that the data can be used in further analysis of the running data.
@@ -121,7 +121,8 @@ class MusicLibrary:
         ----------
         track_uris : Pandas.Series [str]
             A series with track uris of the Spotify API
-
+        api_call_length : int
+            Batch size for tracks per API call (might change with Spotify policies)
         """
 
         # clean input list to contain valid, unique entries
@@ -134,7 +135,6 @@ class MusicLibrary:
         required_uris = set(track_uris)
         unknown_uris = list(required_uris.difference(known_uris))
 
-        api_call_length = 50
         chunks = [
             unknown_uris[x : x + api_call_length]
             for x in range(0, len(unknown_uris), api_call_length)
